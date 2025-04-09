@@ -4,9 +4,22 @@
 </div>
 
 <div class="leader-icons">
-<img class="second-img" src="" alt="ikon för andraplats">
+
+  <div class="second">
+  <img class="second-img" src="" alt="ikon för andraplats">
+  <p *ngIf="topThreeUsers.length > 1">{{ topThreeUsers[1].user.name }}</p>
+</div>
+
+<div class="leader">
 <img class="leader-img" src="" alt="ikon för ledare">
+<p *ngIf="topThreeUsers.length > 0">{{ topThreeUsers[0].user.name }}</p>
+<p>{{ topThreeUsers[0].activity.points }} poäng</p>
+</div>
+
+<div class="third">
 <img class="third-img" src="" alt="ikon för tredjeplats">
+<p *ngIf="topThreeUsers.length > 2">{{ topThreeUsers[2].user.name }}</p>
+</div>
 </div>
 
 <app-leader-board></app-leader-board>
