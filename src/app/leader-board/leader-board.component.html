@@ -1,1 +1,27 @@
-<p>leader-board works!</p>
+
+<div class="leaderBoard">
+  <h3>Vecka: 13</h3>
+  <hr>
+  <table class="tableScore">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Namn</th>
+        <th>Tid</th>
+        <th>Aktivitet</th>
+        <th>Poäng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let userActivity of points; index as i">
+        <td>{{i + 1}}</td>
+        <td>{{userActivity.user.name}}</td>
+        <td>{{userActivity.duration}}</td>
+        <td>{{userActivity.activity.name}}</td>
+        <td>{{userActivity.activity.points}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  <hr>
+  </div>

@@ -1,0 +1,37 @@
+.headlines{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom:5em;
+}
+
+
+.leader-icons{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  gap:5em;
+}
+
+.leader-img{
+  border-radius: 50%;
+  height:3em;
+  background-color: #FBAFD8;
+  position:absolute;
+  top:23em;
+}
+
+.second-img{
+  border-radius: 50%;
+  height:3em;
+  background-color: #76FFE1;
+}
+
+.third-img{
+  border-radius: 50%;
+  height:3em;
+  background-color: #FFF980;
+}
+
+
