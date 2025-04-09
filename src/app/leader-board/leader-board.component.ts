@@ -19,6 +19,7 @@ export class LeaderBoardComponent {
     this.http.get<any[]>('http://localhost:8080/api/useractivities')
       .subscribe(data => {
         this.points = data;
+        console.log(this.points);
       });
   }
 
