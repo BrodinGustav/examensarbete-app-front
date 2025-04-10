@@ -8,12 +8,15 @@ import { LogInRequest } from '../models/log-in-request';
 })
 export class LogInService {
 
+  email: string = '';
+  password: string = '';
+
   private apiUrl = 'http://localhost:8080/api/auth/login';
 
   constructor(private http: HttpClient) { }
 
   //Skickar poster till API
-  register(data: LogInRequest): Observable<any> {   //Använder interface, Returnerar observable
+  login(data: LogInRequest): Observable<any> {   //Använder interface, Returnerar observable
     return this.http.post(`${this.apiUrl}`, data)
   }
 }

@@ -5,9 +5,9 @@
   <h1>Registrera konto</h1>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
-    <label for="username">Användarnamn:</label>
-    <input id="username" formControlName="username" type="text">
-    <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+    <label for="name">Användarnamn:</label>
+    <input id="name" formControlName="name" type="text">
+    <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
       Användarnamn är obligatoriskt.
     </div>
 

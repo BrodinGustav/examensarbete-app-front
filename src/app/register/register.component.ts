@@ -19,13 +19,13 @@ export class RegisterComponent {
   constructor(private fb: FormBuilder, private registerService: RegisterService, private router: Router) {
 
     this.registerForm = this.fb.group({
-      username: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       confirmPassword: ['', Validators.required],
-    }); {
+    }, {
       validators: this.passwordMatchValidator  //funktion för lösenordsvaliderare
-    };
+    });
   }
 
 //Kontroll om för bekräftelse av lösenord
@@ -45,10 +45,12 @@ onSubmit(): void {
   const data: RegisterRequest = this.registerForm.value;  //konverterar formvärden till ett RegisterRequest
   this.registerService.register(data).subscribe({         //Anropar register-tjänst. Sätter subscribe till observable
     next: response => {
+
       console.log('Godkänd registrering!', response);
+      console.log('E-post från backend-svar:', response.email);
 
       //Skicka vidare användare
-      this.router.navigate(['/log-in']);
+      this.router.navigate(['/login']);
 
     },
     error: err => {

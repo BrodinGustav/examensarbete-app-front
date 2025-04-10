@@ -3,8 +3,8 @@
   <nav *ngIf="showNavigation">
 
     <div class="logo">
-      <p>User</p>
-    </div>
+      <p *ngIf="name">{{name}}</p>
+      </div>
 
     <h1>App</h1>
 
