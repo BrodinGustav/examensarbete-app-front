@@ -1,1 +1,28 @@
-<p>log-in works!</p>
+<div class="headerDiv">
+  <h1>App</h1>
+</div>
+<div id="registerForm">
+  <h1>Logga in</h1>
+  <form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
+
+        <label for="email">E-post:</label>
+    <input id="email" formControlName="email" type="email">
+    <div *ngIf="logInForm.get('email')?.invalid && logInForm.get('email')?.touched">
+      Vänligen ange en giltig e-postadress.
+    </div>
+
+    <label for="password">Lösenord:</label>
+    <input id="password" formControlName="password" type="password">
+    <div *ngIf="logInForm.get('password')?.invalid && logInForm.get('password')?.touched">
+      Lösenordet är obligatoriskt och måste vara minst 6 tecken långt.
+    </div>
+
+
+    <button type="submit" [disabled]="logInForm.invalid">Logga in</button>
+  </form>
+
+  <p>Har du inget konto?</p>
+  <div class="link">
+    <a [routerLink]="'/register'">Registrera</a>
+  </div>
+</div>
