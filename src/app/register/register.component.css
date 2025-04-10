@@ -1,3 +1,9 @@
+.headerDiv{
+  max-width:100%;
+  background: linear-gradient(to right, rgb(221, 177, 0), #FFCD45);
+  padding:1em;
+}
+
 h1{
   text-align: center;
 }
@@ -74,4 +80,9 @@ div.ng-touched.ng-invalid {
 
 div.ng-touched.ng-valid {
   display: none;
+}
+
+.link{
+  color:green;
+  font-weight: bold;
 }

@@ -1,3 +1,6 @@
+<div class="headerDiv">
+<h1>App</h1>
+</div>
 <div id="registerForm">
   <h1>Registrera konto</h1>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
@@ -24,8 +27,8 @@
   <button type="submit" [disabled]="registerForm.invalid">Registrera</button>
 </form>
 
-<div>
-  <p>Har du redan konto?</p>
-  <a href="../log-in/log-in.component.html">Logga in</a>
+<p>Har du redan konto?</p>
+<div class="link">
+  <a [routerLink]="'/log-in'">Logga in</a>
 </div>
 </div>
