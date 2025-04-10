@@ -2,6 +2,16 @@ header{
   max-width:100%;
 }
 
+.logo{
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #FFFF;
+  width:30px;
+  height:30px;
+  padding:1em;
+}
+
 
 nav {
   background: linear-gradient(to right, rgb(221, 177, 0), #FFCD45);
@@ -48,6 +58,12 @@ button.add-activity {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.hamburger-menu img {
+  width: 30px;
+  height: 30px;
+  display: block;
 }
 
 

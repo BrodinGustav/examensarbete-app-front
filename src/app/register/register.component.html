@@ -1,1 +1,25 @@
-<p>register works!</p>
+<div id="registerForm">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <label for="username">Användarnamn:</label>
+    <input id="username" formControlName="username" type="text">
+    <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+      Användarnamn är obligatoriskt.
+    </div>
+
+    <label for="email">E-post:</label>
+    <input id="email" formControlName="email" type="email">
+    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+      Vänligen ange en giltig e-postadress.
+    </div>
+
+    <label for="password">Lösenord:</label>
+  <input id="password" formControlName="password" type="password">
+  <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+    Lösenordet är obligatoriskt och måste vara minst 6 tecken långt.
+  </div>
+
+
+  <button type="submit" [disabled]="registerForm.invalid">Register</button>
+</form>
+</div>
