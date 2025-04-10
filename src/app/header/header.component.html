@@ -1,11 +1,17 @@
 <header>
   <nav>
-      <ul>
-        <img class="profil-img" src="" alt="profil-bild">
-          <li><a routerLink="/home" routerLinkActive="current">Startsida</a></li>
-          <li><a routerLink="/profile" routerLinkActive="current">Profil</a></li>
+    <div class="logo">
+      <img class="profil-img" src="" alt="profil-bild">
+    </div>
+    <button class="hamburger-menu" (click)="toggleMenu()"><img src="/bars-solid.svg"></button>
 
-        <button class="add-activity">Lägg till</button>
-        </ul>
+    <ul [ngClass]="{'active': menuOpen}">
+
+      <li><a routerLink="/home" routerLinkActive="current">Startsida</a></li>
+      <li><a routerLink="/profile" routerLinkActive="current">Profil</a></li>
+
+      <button class="add-activity">Lägg till</button>
+
+    </ul>
   </nav>
-  </header>
+</header>

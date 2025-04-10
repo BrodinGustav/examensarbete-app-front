@@ -6,5 +6,5 @@ import { provideHttpClient } from '@angular/common/http';   //Aktiverar HttpClie
 import { DatePipe } from '@angular/common';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),provideHttpClient(), DatePipe]
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),provideHttpClient(), DatePipe] //Möjgligör för globalhantering
 };
