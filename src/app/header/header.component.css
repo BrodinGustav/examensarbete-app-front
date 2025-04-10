@@ -2,6 +2,7 @@ header{
   max-width:100%;
 }
 
+
 .logo{
   display: flex;
   align-items: center;
@@ -11,6 +12,8 @@ header{
   height:30px;
   padding:1em;
 }
+
+
 
 
 nav {

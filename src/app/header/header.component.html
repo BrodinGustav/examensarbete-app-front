@@ -1,8 +1,13 @@
 <header>
-  <nav>
+  <!-- Visa navigationen om showNavigation är true -->
+  <nav *ngIf="showNavigation">
+
     <div class="logo">
       <p>User</p>
     </div>
+
+    <h1>App</h1>
+
     <button class="hamburger-menu" (click)="toggleMenu()"><img src="/bars-solid.svg"></button>
 
     <ul [ngClass]="{'active': menuOpen}">
@@ -14,4 +19,5 @@
 
     </ul>
   </nav>
+
 </header>
