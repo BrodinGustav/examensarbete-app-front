@@ -1,24 +1,23 @@
 <div class="headlines">
 <h1>Poängtavla</h1>
-<h2>Dagens datum</h2>
+<app-date-of-day></app-date-of-day>
 </div>
 
-<div class="leader-icons">
+<div class="firstPlaceContainer">
+<div class="leader" *ngIf="topThreeUsers.length > 0 && topThreeUsers[0]?.activity">
+  <p *ngIf="topThreeUsers.length > 0">{{ topThreeUsers[0].user.name }}</p>
+  <p>{{ topThreeUsers[0].activity.points }} poäng</p>
+  </div>
+</div>
+
+<div class="secondThirdPlaceDiv">
 
   <div class="second" *ngIf="topThreeUsers.length > 1 && topThreeUsers[1]?.activity">
-  <img class="second-img" src="/second.png" alt="ikon för andraplats">
   <p *ngIf="topThreeUsers.length > 1">{{ topThreeUsers[1].user.name }}</p>
   <p>{{ topThreeUsers[1].activity.points }} poäng</p>
 </div>
 
-<div class="leader" *ngIf="topThreeUsers.length > 0 && topThreeUsers[0]?.activity">
-<img class="leader-img" src="/leader.png" alt="ikon för ledare">
-<p *ngIf="topThreeUsers.length > 0">{{ topThreeUsers[0].user.name }}</p>
-<p>{{ topThreeUsers[0].activity.points }} poäng</p>
-</div>
-
 <div class="third" *ngIf="topThreeUsers.length > 2 && topThreeUsers[2]?.activity">
-<img class="third-img" src="/third.png" alt="ikon för tredjeplats">
 <p *ngIf="topThreeUsers.length > 2">{{ topThreeUsers[2].user.name }}</p>
 <p>{{ topThreeUsers[2].activity.points }} poäng</p>
 </div>

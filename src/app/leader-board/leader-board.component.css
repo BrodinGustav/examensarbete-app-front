@@ -1,5 +1,5 @@
 .leaderBoard{
-  width:100%;
+  max-width:100%;
   background-color: #BFEDCC;
   text-align: center;
   padding:1em;
@@ -7,7 +7,7 @@
 }
 
 .tableScore{
-  width: 100%;
+ max-width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
 
