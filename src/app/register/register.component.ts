@@ -1,6 +1,6 @@
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { RegisterRequest } from '../models/register-request';
 import { RegisterService } from '../services/register.service';
@@ -12,7 +12,7 @@ import { RegisterService } from '../services/register.service';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
-export class RegisterComponent{
+export class RegisterComponent {
 
   registerForm: FormGroup;
 
@@ -22,28 +22,40 @@ export class RegisterComponent{
       username: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      confirmPassword: new FormControl('', Validators.required),
-    });
+      confirmPassword: ['', Validators.required],
+    }); {
+      validators: this.passwordMatchValidator  //funktion för lösenordsvaliderare
+    };
   }
-  ngOnInit(): void {}
 
-  onSubmit(): void {
-    if (this.registerForm.valid) {
+//Kontroll om för bekräftelse av lösenord
+  passwordMatchValidator(group: AbstractControl): ValidationErrors | null {
+  const password = group.get('password')?.value;
+  const confirmPassword = group.get('confirmPassword')?.value;
+  return password === confirmPassword ? null : { passwordMismatch: true };
+}
 
-      const data: RegisterRequest = this.registerForm.value;  //konverterar formvärden till ett RegisterRequest
-      this.registerService.register(data).subscribe({         //Anropar register-tjänst. Sätter subscribe till observable
-        next: response => {
-          console.log('Godkänd registrering!', response);
 
-          //Skicka vidare användare
-          this.router.navigate(['/log-in']);
 
-        },
-        error: err => {
-          console.error('Registrering misslyckades:', err);
-        }
-      });
+ngOnInit(): void {}
+
+onSubmit(): void {
+  if(this.registerForm.valid) {
+
+  const data: RegisterRequest = this.registerForm.value;  //konverterar formvärden till ett RegisterRequest
+  this.registerService.register(data).subscribe({         //Anropar register-tjänst. Sätter subscribe till observable
+    next: response => {
+      console.log('Godkänd registrering!', response);
+
+      //Skicka vidare användare
+      this.router.navigate(['/log-in']);
+
+    },
+    error: err => {
+      console.error('Registrering misslyckades:', err);
     }
+  });
+}
   }
 
 }
