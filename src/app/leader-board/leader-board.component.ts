@@ -11,12 +11,17 @@ import { Component } from '@angular/core';
 })
 export class LeaderBoardComponent {
 
+  //Variabel för att lagra data från GET
   points: any[] = [];
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
+
+    //Hämtar data för utskrift till HomeComponent
     this.http.get<any[]>('http://localhost:8080/api/useractivities')
+
+    //Sätter subscribe till observable
       .subscribe(data => {
         this.points = data;
         console.log(this.points);

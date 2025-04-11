@@ -18,6 +18,7 @@ export class LogInComponent {
 
   constructor(private fb: FormBuilder, private loginService: LogInService, private router: Router) {
 
+    //Validering för formulär via FormGroup
     this.logInForm = this.fb.group({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
@@ -32,15 +33,20 @@ export class LogInComponent {
   ngOnInit(): void { }
 
   onSubmit(): void {
+
+    //Formulärvalidering för login
     if (this.logInForm.valid) {
 
-      const data: LogInRequest = this.logInForm.value;  //konverterar formvärden till ett LoginRequest
+      //Hämtar värden från formulär
+      const data: LogInRequest = this.logInForm.value;
 
-      this.loginService.login(data).subscribe({         //Anropar login-tjänst. Sätter subscribe till observable
+      //Anropar login-tjänst. Sätter subscribe till observable
+      this.loginService.login(data).subscribe({
         next: response => {
 
           console.log('Inloggning svar från server:', response);
 
+          //Om JWT finns
           if (response && response['jwt-token']) {
 
             localStorage.setItem('email', this.logInForm.value.email);
@@ -56,8 +62,10 @@ export class LogInComponent {
         },
         error: err => {
           console.error('Inloggning misslyckades:', err);
+
           if (err.status === 401) {
             console.log("Felaktiga inloggningsuppgifter.");
+
           } else if (err.status === 500) {
             console.log("Serverfel.");
           }

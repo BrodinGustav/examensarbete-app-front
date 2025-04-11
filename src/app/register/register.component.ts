@@ -12,19 +12,29 @@ import { RegisterService } from '../services/register.service';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
+
+
 export class RegisterComponent {
 
   registerForm: FormGroup;
 
+
+
   constructor(private fb: FormBuilder, private registerService: RegisterService, private router: Router) {
 
+
+
+    //Formulärvalidering via FormGroup
     this.registerForm = this.fb.group({
       name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       confirmPassword: ['', Validators.required],
     }, {
-      validators: this.passwordMatchValidator  //funktion för lösenordsvaliderare
+
+      //funktion för lösenordsvaliderare
+      validators: this.passwordMatchValidator
+
     });
   }
 
@@ -40,10 +50,15 @@ export class RegisterComponent {
 ngOnInit(): void {}
 
 onSubmit(): void {
+
+  //Formulärvalidering för registrering
   if(this.registerForm.valid) {
 
-  const data: RegisterRequest = this.registerForm.value;  //konverterar formvärden till ett RegisterRequest
-  this.registerService.register(data).subscribe({         //Anropar register-tjänst. Sätter subscribe till observable
+    //Hämt formulärdata kontrollerar mot interface
+  const data: RegisterRequest = this.registerForm.value;
+
+  //Anropar register-tjänst. Sätter subscribe till observable
+  this.registerService.register(data).subscribe({
     next: response => {
 
       console.log('Godkänd registrering!', response);

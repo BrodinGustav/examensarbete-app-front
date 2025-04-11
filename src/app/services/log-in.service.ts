@@ -8,6 +8,7 @@ import { LogInRequest } from '../models/log-in-request';
 })
 export class LogInService {
 
+  //Variabel för att lagra data från POST
   email: string = '';
   password: string = '';
 

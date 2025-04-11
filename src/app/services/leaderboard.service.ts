@@ -8,12 +8,12 @@ import { LeaderboardFetch } from '../models/leaderboard-fetch';
 })
 export class LeaderboardServiceService {
 
-  private apiUrl ='https://localhost:8080:/api/useractivities';
+  private apiUrl ='http://localhost:8080:/api/useractivities';
 
   constructor(private http:HttpClient) { }
 
    //Hämta poster från API
-    getData(): Observable<LeaderboardFetch[]> {   //Kontrollerar datan mot interface
+    getData(): Observable<LeaderboardFetch[]> {   //Kontrollerar datan mot interface, returnerar observable
       return this.http.get<LeaderboardFetch[]>(this.apiUrl);
     }
 }
