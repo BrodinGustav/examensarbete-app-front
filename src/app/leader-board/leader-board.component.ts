@@ -19,7 +19,7 @@ export class LeaderBoardComponent {
   ngOnInit() {
 
     //Hämtar data för utskrift till HomeComponent
-    this.http.get<any[]>('http://localhost:8080/api/useractivities')
+    this.http.get<any[]>('http://localhost:8080/api/useractivities/stream')
 
     //Sätter subscribe till observable
       .subscribe(data => {

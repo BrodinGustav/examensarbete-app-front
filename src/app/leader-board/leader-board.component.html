@@ -13,13 +13,13 @@
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor="let userActivity of points; index as i">
-        <tr *ngIf="userActivity?.activity">
+      <ng-container *ngFor="let user of points; index as i">
+        <tr *ngIf="user?.user">
         <td>{{i + 1}}</td>
-        <td>{{userActivity.user.name}}</td>
-        <td>{{userActivity.duration}}</td>
-        <td>{{userActivity.activity.name}}</td>
-        <td>{{userActivity.activity.points}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.duration}}</td>
+        <td>{{user.activity}}</td>
+        <td>{{user.totalPoints}}</td>
       </tr>
       </ng-container>
     </tbody>

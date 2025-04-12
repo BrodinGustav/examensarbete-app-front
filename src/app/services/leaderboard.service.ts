@@ -1,19 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LeaderboardFetch } from '../models/leaderboard-fetch';
+import { LeaderboardUser } from '../models/leaderboard-user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LeaderboardServiceService {
 
-  private apiUrl ='http://localhost:8080:/api/useractivities';
+  private apiUrl ='http://localhost:8080:/api/useractivities/stream';
 
   constructor(private http:HttpClient) { }
 
-   //Hämta poster från API
-    getData(): Observable<LeaderboardFetch[]> {   //Kontrollerar datan mot interface, returnerar observable
-      return this.http.get<LeaderboardFetch[]>(this.apiUrl);
+   //Hämta användaraktiviteter från API
+    getData(): Observable<LeaderboardUser[]> {   //Kontrollerar datan mot interface, returnerar observable
+      return this.http.get<LeaderboardUser[]>(this.apiUrl);
     }
 }

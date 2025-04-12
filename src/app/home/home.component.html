@@ -4,22 +4,22 @@
 </div>
 
 <div class="firstPlaceContainer">
-<div class="leader" *ngIf="topThreeUsers.length > 0 && topThreeUsers[0]?.activity">
-  <p *ngIf="topThreeUsers.length > 0">{{ topThreeUsers[0].user.name }}</p>
-  <p>{{ topThreeUsers[0].activity.points }} poäng</p>
+<div class="leader" *ngIf="topThreeUsers.length > 0 && topThreeUsers[0]?.points">
+  <!-- <p *ngIf="topThreeUsers.length > 0">{{ topThreeUsers[0].user.name }}</p> *HÄR SKA VI ANVÄNDA STREAM-->
+  <p>{{ topThreeUsers[0].points }} poäng</p>
   </div>
 </div>
 
 <div class="secondThirdPlaceDiv">
 
-  <div class="second" *ngIf="topThreeUsers.length > 1 && topThreeUsers[1]?.activity">
-  <p *ngIf="topThreeUsers.length > 1">{{ topThreeUsers[1].user.name }}</p>
-  <p>{{ topThreeUsers[1].activity.points }} poäng</p>
+  <div class="second" *ngIf="topThreeUsers.length > 1 && topThreeUsers[1]?.points">
+  <!-- <p *ngIf="topThreeUsers.length > 1">{{ topThreeUsers[1].user.name }}</p> *HÄR SKA VI ANVÄNDA STREAM-->
+  <p>{{ topThreeUsers[1].points }} poäng</p>
 </div>
 
-<div class="third" *ngIf="topThreeUsers.length > 2 && topThreeUsers[2]?.activity">
-<p *ngIf="topThreeUsers.length > 2">{{ topThreeUsers[2].user.name }}</p>
-<p>{{ topThreeUsers[2].activity.points }} poäng</p>
+<div class="third" *ngIf="topThreeUsers.length > 2 && topThreeUsers[2]?.points">
+<!-- <p *ngIf="topThreeUsers.length > 2">{{ topThreeUsers[2].user.name }}</p> *HÄR SKA VI ANVÄNDA STREAM-->
+<p>{{ topThreeUsers[2].points }} poäng</p>
 </div>
 </div>
 
