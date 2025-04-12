@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { LeaderboardUser } from '../models/leaderboard-user';
 
 
 @Component({
@@ -19,13 +20,23 @@ export class LeaderBoardComponent {
   ngOnInit() {
 
     //Hämtar data för utskrift till HomeComponent
-    this.http.get<any[]>('http://localhost:8080/api/useractivities/stream')
+    this.http.get<LeaderboardUser[]>('http://localhost:8080/api/useractivities/stream')
 
     //Sätter subscribe till observable
       .subscribe(data => {
-        this.points = data;
-        console.log(this.points);
-      });
-  }
 
+        console.log('Hämtad data:', data);
+
+        this.points = data; //Lagrar hämtad data
+
+        console.log('Points:', this.points);
+
+        //Debugg
+        data.forEach((user, index) => {
+          console.log(`Användare ${index + 1}:`, user.name);
+          console.log('Aktiviteter:', user.activity);
+      });
+  });
+
+}
 }

@@ -8,7 +8,7 @@ import { LeaderboardUser } from '../models/leaderboard-user';
 })
 export class LeaderboardServiceService {
 
-  private apiUrl ='http://localhost:8080:/api/useractivities/stream';
+  private apiUrl ='http://localhost:8080/api/useractivities/stream';
 
   constructor(private http:HttpClient) { }
 

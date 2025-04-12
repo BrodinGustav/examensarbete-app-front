@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LeaderbordUsername } from '../models/leaderbord-username';
+import { LeaderboardUser } from '../models/leaderboard-user';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class LeaderboardUsernameService {
   constructor(private http:HttpClient) { }
 
 //Hämta användarnanm från API
-getData(): Observable<LeaderbordUsername[]> {   //Kontrollerar datan mot interface, returnerar observable
-  return this.http.get<LeaderbordUsername[]>(this.apiUrl);
+getData(): Observable<LeaderboardUser[]> {   //Kontrollerar datan mot interface, returnerar observable
+  return this.http.get<LeaderboardUser[]>(this.apiUrl);
 }
 
 
