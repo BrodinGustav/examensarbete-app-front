@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { LeaderboardUser } from '../models/leaderboard-user';
+import { CurrentWeekComponent } from "../current-week/current-week.component";
 
 
 @Component({
   selector: 'app-leader-board',
-  imports: [CommonModule],
+  imports: [CommonModule, CurrentWeekComponent],
   templateUrl: './leader-board.component.html',
   styleUrl: './leader-board.component.css'
 })
