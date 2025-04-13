@@ -7,8 +7,6 @@
       <tr>
         <th>#</th>
         <th>Namn</th>
-        <th>Tid(min)</th>
-        <th>Aktivitet</th>
         <th>Poäng</th>
       </tr>
     </thead>
@@ -16,9 +14,7 @@
       <ng-container *ngFor="let user of points; index as i">
         <tr>
         <td>{{i + 1}}</td>
-        <td>{{user.name}}</td>
-        <td>{{user.duration || '–'}}</td>
-        <td>{{user.activity || '–'}}</td>
+        <td>{{user.name || 'Anonym'}}</td>
         <td>{{user.points || '–'}}</td>
       </tr>
       </ng-container>
