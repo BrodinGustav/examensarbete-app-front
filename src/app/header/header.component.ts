@@ -3,11 +3,12 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { UserNameInHeader } from '../models/user-name-in-header';
+import { LogOutComponent } from "../log-out/log-out.component";
 
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive, NgClass, NgIf, NgFor],
+  imports: [RouterLink, RouterLinkActive, NgClass, NgIf, NgFor, LogOutComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })

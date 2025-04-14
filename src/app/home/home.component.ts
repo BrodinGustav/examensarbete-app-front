@@ -26,23 +26,8 @@ export class HomeComponent {
     this.http.get<LeaderboardUser[]>('http://localhost:8080/api/useractivities/stream')
 .subscribe(data => {
 
-
-const usersWithTotalPoints = data.map(user => ({
-  ...user,
-  totalPoints: Array.isArray(user.activity) ?
-  user.activity.reduce((sum, activities) => sum + activities.points, 0) : 0
-}));
-
-console.log("User data:", data);
-
-  //Sorterar efter poäng
-  const sorted = usersWithTotalPoints.sort((a, b) => b.totalPoints - a.totalPoints);
-
-  //Sparar listan
-  this.points = sorted;
-
   //Sparar tre högsta poäng
-  this.topThreeUsers = sorted.slice(0, 3);
+  this.topThreeUsers = data.slice(0, 3);
 })
 
 }

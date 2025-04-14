@@ -1,0 +1,8 @@
+.logout-button{
+  background-color: hsl(322, 92%, 30%);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  margin-top:1em;
+}
