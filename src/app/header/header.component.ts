@@ -8,6 +8,7 @@ import { LogOutComponent } from "../log-out/log-out.component";
 
 @Component({
   selector: 'app-header',
+  standalone: true,
   imports: [RouterLink, RouterLinkActive, NgClass, NgIf, LogOutComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'

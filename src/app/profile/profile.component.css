@@ -1,0 +1,63 @@
+
+.logo{
+  background-color: #ffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin:0 auto;
+}
+
+h3{
+  text-align: center;
+}
+
+.todaysDate{
+  text-align: center;
+}
+
+.backgroundDiv{
+  margin-bottom:5em;
+  margin-top:2em;
+}
+
+/*
+.backgroundTrainingSchema{
+  background-color: #D9D9D9;
+  width:100%;
+  height:70vh;
+}
+  */
+
+.weeklyTraining, .todaysTraining{
+  background-color: #F7F7F7;
+  width:80vw;
+  height:auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin:0 auto;
+}
+
+hr{
+  width:60vw;
+  height:1px;
+  color:black;
+}
+
+.weeklyTrainingTable, .todaysTraining{
+  max-width:100%;
+  text-align: center;
+  padding:1em;
+  margin-top:5em;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin: 0 auto;
+}
+
+ .weeklyTraining th, .todaysTraining th {
+   width: 25%;
+   text-align: center;
+   padding: 8px;
+ }

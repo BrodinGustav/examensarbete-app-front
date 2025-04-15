@@ -52,8 +52,10 @@ export class LogInComponent {
             console.log("Email lagrat i localStorage:", this.logInForm.value.email);
             console.log('Godkänd Inlogg!', response);
 
-            localStorage.setItem('jwt-token', response.token);                      //Varför lagras inget värde för token?
-            console.log("Token lagrad i localStorage:", response.token);            //Varför lagras inget värde för token?
+            localStorage.setItem('jwt-token', response.token);                                        //Varför lagras inget värde för token?
+            console.log("Token lagrad i localStorage:", JSON.stringify(response.token));            //Varför lagras inget värde för token?
+
+            //localStorage.setItem('userId', user.id.toString());                                   //Hur kan jag göra detta? Vill använda id för crud sen
 
             //Skicka vidare användare
             this.router.navigate(['/home']);

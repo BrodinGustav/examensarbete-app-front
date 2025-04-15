@@ -1,1 +1,43 @@
-<p>profile works!</p>
+<div class="backgroundDiv">
+  <table class="todaysTraining">
+    <p><app-date-of-day></app-date-of-day></p>
+    <h3>Din träningsdag</h3>
+    <hr>
+    <thead>
+      <tr>
+        <th>Aktivitet</th>
+        <th>Tid</th>
+        <th>Poäng</th>
+      </tr>
+    </thead>
+    </table>
+</div>
+
+<!--<div class="backgroundTrainingSchema">
+  <p>mörk bakgrund</p>
+</div> -->
+
+<div class="weeklyTraining">
+  <h3>Din träningsvecka</h3>
+  <hr>
+  <table class="weeklyTrainingTable">
+    <thead>
+      <tr>
+        <th>Datum</th>
+        <th>Aktivitet</th>
+        <th>Poäng</th>
+      </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let activity of getUser?.activities">
+        <tr>
+        <td>{{ activity.timestamp | date: 'MM-dd' }}</td>
+        <td>{{ activity.activity }}</td>
+        <td>{{activity.points }}</td>
+
+      </tr>
+      </ng-container>
+    </tbody>
+  </table>
+  </div>
+
