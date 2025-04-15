@@ -28,8 +28,6 @@ export class LogInComponent {
 
 
 
-
-
   ngOnInit(): void { }
 
   onSubmit(): void {
@@ -49,9 +47,13 @@ export class LogInComponent {
           //Om JWT finns
           if (response && response['jwt-token']) {
 
+
             localStorage.setItem('email', this.logInForm.value.email);
             console.log("Email lagrat i localStorage:", this.logInForm.value.email);
             console.log('Godkänd Inlogg!', response);
+
+            localStorage.setItem('jwt-token', response.token);                      //Varför lagras inget värde för token?
+            console.log("Token lagrad i localStorage:", response.token);            //Varför lagras inget värde för token?
 
             //Skicka vidare användare
             this.router.navigate(['/home']);

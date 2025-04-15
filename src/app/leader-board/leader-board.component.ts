@@ -26,17 +26,19 @@ export class LeaderBoardComponent {
     //Sätter subscribe till observable
       .subscribe(data => {
 
-        console.log('Hämtad data:', data);
+        //debugg
+       // console.log('Hämtad data:', data);
 
         this.points = data; //Lagrar hämtad data
 
-        console.log('Points:', this.points);
+        //debugg
+        //console.log('Points:', this.points);
 
         //Debugg
-        data.forEach((user, index) => {
+       /* data.forEach((user, index) => {
           console.log(`Användare ${index + 1}:`, user.name);
           console.log('Aktiviteter:', user.activity);
-      });
+      });*/
   });
 
 }

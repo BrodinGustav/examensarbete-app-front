@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LogInRequest } from '../models/log-in-request';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,4 +21,5 @@ export class LogInService {
   login(data: LogInRequest): Observable<any> {   //Använder interface, Returnerar observable
     return this.http.post(`${this.apiUrl}`, data)
   }
+
 }

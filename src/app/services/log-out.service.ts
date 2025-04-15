@@ -10,7 +10,12 @@ export class LogOutService {
 
   logOut() {
 
+
     localStorage.removeItem('jwt-token');
 
+    localStorage.clear();
+
     this.router.navigate(['/login']);
+
+
   }}
