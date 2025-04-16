@@ -11,7 +11,7 @@
 
     <label for="activity">Aktivitet:</label>
     <select [(ngModel)]="selectedActivity" name="activity" required>
-      <option *ngFor="let activity of availableActivities" [value]="activity">{{ activity }} </option>
+      <option *ngFor="let activity of availableActivities" [value]="activity.activity">{{ activity.activity }} </option>
       </select>
 
     <label for="duration">Tid:</label>

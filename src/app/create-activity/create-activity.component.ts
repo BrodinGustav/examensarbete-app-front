@@ -16,8 +16,8 @@ import { CreateActivity } from '../models/create-activity';
 export class CreateActivityComponent implements OnInit {
 
 
-  availableActivities: string[] = [];
-  selectedActivity: string = '';
+  availableActivities: { activity: string }[] = [];   //Lista för tillgängliga aktiviteter
+  selectedActivity: string = '';                      //Variabel för vald aktivitet
   selectedDuration: string = '';
   selectedDate: string = '';
   successMessage: string = '';

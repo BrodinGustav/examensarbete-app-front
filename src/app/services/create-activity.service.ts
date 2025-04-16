@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class CreateActivityService {
 
   private apiUrlCreate ='http://localhost:8080/api/useractivities/create';
-  private apiUrlFetch ='http://localhost:8080/api/useractivities';
+  private apiUrlFetch ='http://localhost:8080/api/activities';
 
   constructor(private http:HttpClient) { }
 
@@ -19,7 +19,7 @@ export class CreateActivityService {
 }
 
   //Hämta tillgängliga aktiviteter från DB
-  getActivities(): Observable<string[]> {
-    return this.http.get<string[]>(`${this.apiUrlFetch}`)
+  getActivities(): Observable<{ activity: string }[]> {
+    return this.http.get<{ activity: string }[]>(`${this.apiUrlFetch}`)
   }
 }
