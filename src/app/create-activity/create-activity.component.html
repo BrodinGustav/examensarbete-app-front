@@ -1,0 +1,33 @@
+<div class="headerDiv">
+  <h1>App</h1>
+</div>
+<div id="registerForm">
+  <h1>Registrera aktivitet</h1>
+
+  <form (ngSubmit)="submitActivity()">
+
+    <label for="date">Datum:</label>
+    <input id="date" [(ngModel)] = "selectedDate" name="date" required />
+
+    <label for="activity">Aktivitet:</label>
+    <select [(ngModel)]="selectedActivity" name="activity" required>
+      <option *ngFor="let activity of availableActivities" [value]="activity">{{ activity }} </option>
+      </select>
+
+    <label for="duration">Tid:</label>
+      <select [(ngModel)]="selectedDuration" name="duration" required>
+        <option *ngFor="let time of durations" [value]="time"> {{ time }} </option>
+      </select>
+
+    <button type="submit">Registrera</button>
+
+  </form>
+
+  <p *ngIf="successMessage">{{ successMessage }}</p>
+  <p *ngIf="errorMessage" style="color:red">{{ errorMessage }}</p>
+
+  <p>Tillbaka till poängtavlan</p>
+  <div class="link">
+    <a [routerLink]="'/home'">Leaderboard</a>
+  </div>
+</div>

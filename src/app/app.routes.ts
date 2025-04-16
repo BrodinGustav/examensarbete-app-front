@@ -5,12 +5,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { RegisterComponent } from './register/register.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { authGuard } from './auth.guard';
+import { CreateActivityComponent } from './create-activity/create-activity.component';
 
 export const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LogInComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [authGuard]},
+  {path: 'createActivity', component: CreateActivityComponent, canActivate: [authGuard]},
   {path: '', redirectTo: '/register', pathMatch: 'full'},
   {path: '404', component: NotFoundComponent},
   {path: '**', component: NotFoundComponent},
