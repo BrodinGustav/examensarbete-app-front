@@ -2,25 +2,26 @@
 <!--<div class="backgroundTrainingSchema">
   <p>mörk bakgrund</p>
 </div> -->
+<div class="date">
+  <p><app-date-only></app-date-only></p>
+</div>
 
 <div class="weeklyTraining">
   <h3>Din träningsvecka</h3>
-  <p><app-date-of-day></app-date-of-day></p>
+  <h3><app-current-week></app-current-week></h3>
   <hr>
   <table class="weeklyTrainingTable">
     <thead>
       <tr>
-        <th>Datum</th>
         <th>Aktivitet</th>
         <th>Poäng</th>
       </tr>
     </thead>
     <tbody>
-    <ng-container *ngFor="let activity of getUser?.activities">
+    <ng-container *ngFor="let summary of weeklyPoints">
         <tr>
-        <td>{{ activity.timestamp | date: 'MM-dd' }}</td>
-        <td>{{ activity.activity }}</td>
-        <td>{{activity.points }}</td>
+        <td>{{ summary.activity }}</td>
+        <td>{{ summary.points }}</td>
 
       </tr>
       </ng-container>

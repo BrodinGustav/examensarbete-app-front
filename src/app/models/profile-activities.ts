@@ -18,3 +18,12 @@ export interface UserApiResponse {
   data: UserData;
   timestamp: string;
 }
+
+export interface ActivitySummary {
+  activity: {
+    id: number;
+    activity: string;
+    timestamp: string
+  };
+  points: number;
+}

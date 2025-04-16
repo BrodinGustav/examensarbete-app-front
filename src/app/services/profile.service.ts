@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserApiResponse  } from '../models/profile-activities';
+import { ActivitySummary, UserApiResponse  } from '../models/profile-activities';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class ProfileService {
 
 
    //Hämta användaraktiviteter från API
-    getUser(id: number): Observable<UserApiResponse> {   //Kontrollerar datan mot interface, returnerar observable
-      return this.http.get<UserApiResponse>(`${this.apiUrl}/${id}`);
+   getWeeklyPoints(id: number): Observable<ActivitySummary[]> {   //Kontrollerar datan mot interface, returnerar observable
+      return this.http.get<ActivitySummary[]>(`${this.apiUrl}/${id}/weekly-activity-points`);
     }
 }
