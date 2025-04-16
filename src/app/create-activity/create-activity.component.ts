@@ -13,6 +13,8 @@ import { CreateActivity } from '../models/create-activity';
   styleUrl: './create-activity.component.css'
 })
 
+
+
 export class CreateActivityComponent implements OnInit {
 
 
@@ -27,34 +29,49 @@ export class CreateActivityComponent implements OnInit {
 
 
 
-  constructor(private createActivityService: CreateActivityService) {}
+  constructor(private createActivityService: CreateActivityService) { }
 
 
-ngOnInit(): void {
+  ngOnInit(): void {
 
-//Hämtar in aktiviter DB
-this.createActivityService.getActivities().subscribe({
-  next: (data) => this.availableActivities = data,
-  error: () => this.errorMessage = "Kunde inte hämta aktiviteter"
-});
-}
 
-//Skapar aktivitet
-submitActivity() {
-const userEmail = String(localStorage.getItem('userEmail'));
+    //Hämtar in aktiviter DB
+    this.createActivityService.getActivities().subscribe({
+      next: (data) => this.availableActivities = data,
+      error: () => this.errorMessage = "Kunde inte hämta aktiviteter"
+    });
+  }
 
-const newActivity: CreateActivity = {
-  userEmail: userEmail,
-  activity: this.selectedActivity,
-  duration: this.selectedDuration,
-  date: this.selectedDate,
-};
+  //Skapar aktivitet
+  submitActivity() {
+    const userId = Number(localStorage.getItem('userId'));
 
-  this.createActivityService.registerActivity(newActivity).subscribe({
-    next: () => this.successMessage = "Aktivitet skapad!",
-    error: () => this.errorMessage = "Kunde inte skapa aktivitet."
-  });
+    const newActivity: CreateActivity = {
+      userId: userId,
+      activity: this.selectedActivity,
+      duration: this.selectedDuration,
+      date: this.selectedDate,
+      seconds: this.convertDurationToSeconds(this.selectedDuration)
+    };
+
+    this.createActivityService.registerActivity(newActivity).subscribe({
+      next: () => this.successMessage = "Aktivitet skapad!",
+      error: () => this.errorMessage = "Kunde inte skapa aktivitet."
+    });
 
   }
+
+  private convertDurationToSeconds(duration: string): number {
+    switch (duration) {
+      case '15 min': return 900;
+      case '30 min': return 1800;
+      case '45 min': return 2700;
+      case '1h': return 3600;
+      case '1h 30min': return 5400;
+      case '2h': return 7200;
+      default: return 0;
+    }
+  }
 }
+
 

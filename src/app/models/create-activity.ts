@@ -1,8 +1,9 @@
 
 
 export interface CreateActivity {
-  userEmail: string;
+  userId: number;
   activity: string;
   duration: string;
   date: string;
+  seconds: number
 }
