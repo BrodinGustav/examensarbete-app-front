@@ -4,6 +4,7 @@ import { NgClass, NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { UserNameInHeader } from '../models/user-name-in-header';
 import { LogOutComponent } from "../log-out/log-out.component";
+import { UserNameInHeaderService } from '../services/user-name-in-header.service';
 
 
 @Component({
@@ -36,7 +37,7 @@ export class HeaderComponent implements OnInit{
   userEmail: string | null = '';
 
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private userNameInHeaderService: UserNameInHeaderService) {}
 
 
   ngOnInit(): void {
@@ -45,29 +46,15 @@ export class HeaderComponent implements OnInit{
 
     this.userEmail = localStorage.getItem('email');
 
-    //debugg
-    //console.log("Email från localStorage:", this.userEmail);
-
     //GET
-    this.http.get<UserNameInHeader[]>('http://localhost:8080/api/users')
-      .subscribe(data => {
-
-        //debugg
-        //console.log("Data från API:", data);
-
-        //Lagra användarens mail
-        const currentUser = data.find(entry => entry.email === this.userEmail);
-
-        //Hämta användarens namn från mailet
-        if (currentUser) {
-          this.name = currentUser.name;
-
-          //console.log("Inloggad användare:", this.name);
-
-        } else {
-          console.log("Ingen matchande användare hittades.");
-        }
-      });
+    this.userNameInHeaderService.  getAllUsers().subscribe(data => {
+      const currentUser = data.find(entry => entry.email === this.userEmail);
+      if (currentUser) {
+        this.name = currentUser.name;
+      } else {
+        console.log("Ingen matchande användare hittades.");
+      }
+    });
   }
 
 }

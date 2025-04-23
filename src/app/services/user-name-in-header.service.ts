@@ -9,12 +9,12 @@ import { Observable } from 'rxjs';
 export class UserNameInHeaderService {
 
   //Metod för att hämta mail och namn till header.component
-  private apiUrl ='http://localhost:8080:/api/users';
+  private apiUrl ='http://localhost:8080/api/users';
 
   constructor(private http:HttpClient) { }
 
   //Hämta poster från API
-    getData(): Observable<UserNameInHeader[]> {   //Kontrollerar datan mot interface, returnerar observable
+  getAllUsers(): Observable<UserNameInHeader[]> {   //Kontrollerar datan mot interface, returnerar observable
       return this.http.get<UserNameInHeader[]>(this.apiUrl);
     }
 

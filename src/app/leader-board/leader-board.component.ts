@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { LeaderboardUser } from '../models/leaderboard-user';
 import { CurrentWeekComponent } from "../current-week/current-week.component";
+import { LeaderboardServiceService } from '../services/leaderboard.service';
 
 
 @Component({
@@ -16,30 +17,15 @@ export class LeaderBoardComponent {
   //Variabel för att lagra data från GET
   points: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private leaderboardService: LeaderboardServiceService) {}
 
   ngOnInit() {
 
     //Hämtar data för utskrift till HomeComponent
-    this.http.get<LeaderboardUser[]>('http://localhost:8080/api/useractivities/stream')
-
-    //Sätter subscribe till observable
-      .subscribe(data => {
-
-        //debugg
-       // console.log('Hämtad data:', data);
-
-        this.points = data; //Lagrar hämtad data
-
-        //debugg
-        //console.log('Points:', this.points);
-
-        //Debugg
-       /* data.forEach((user, index) => {
-          console.log(`Användare ${index + 1}:`, user.name);
-          console.log('Aktiviteter:', user.activity);
-      });*/
-  });
+    this.leaderboardService.getData().subscribe({
+      next: (data) => this.points = data,
+      error: () => console.error("Kunde inte hämta data till leaderboard.")
+    });
 
 }
 }

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { DateOfDayComponent } from "../date-of-day/date-of-day.component";
 import { LeaderboardUser } from '../models/leaderboard-user';
+import { LeaderboardServiceService } from '../services/leaderboard.service';
 
 @Component({
   selector: 'app-home',
@@ -17,14 +18,16 @@ export class HomeComponent {
   points: any[] = [];
   topThreeUsers: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private leaderboardService: LeaderboardServiceService) {}
 
 
   //Hämtar användaraktiviteter för top 3 placering i HomeComponent. Prenumenerar från GET i leaderboard.service.ts
   ngOnInit() {
 
-    this.http.get<LeaderboardUser[]>('http://localhost:8080/api/useractivities/stream')
-.subscribe(data => {
+    //Prenumererar på datan från service
+    this.leaderboardService.getData().subscribe(data => {
+      this.points = data;
+
 
   //Sparar tre högsta poäng
   this.topThreeUsers = data.slice(0, 3);
