@@ -49,7 +49,8 @@ ul li a:hover {
 button.add-activity {
   background-color: #007bff;
   color: white;
-  padding: 10px 15px;
+  padding: 5px 10px;
+  border-radius: 30%;
   border: none;
   cursor: pointer;
 }

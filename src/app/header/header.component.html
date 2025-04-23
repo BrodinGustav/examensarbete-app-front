@@ -13,7 +13,11 @@
     <ul [ngClass]="{'active': menuOpen}">
 
       <li><a routerLink="/home" routerLinkActive="current">Startsida</a></li>
+      <hr>
       <li><a routerLink="/profile" routerLinkActive="current">Profil</a></li>
+      <hr>
+      <li><a routerLink="/list" routerLinkActive="current">Aktiviteter</a></li>
+      <hr>
       <a [routerLink]="'/createActivity'"><button class="add-activity">Lägg till</button></a>
       <app-log-out></app-log-out>
 

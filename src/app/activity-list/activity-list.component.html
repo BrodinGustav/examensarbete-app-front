@@ -1,0 +1,30 @@
+
+
+<div class="activityList">
+  <h3>Aktivitetslista</h3>
+  <hr>
+  <table class="activityListTable">
+    <thead>
+      <tr>
+        <th>Aktivitet</th>
+        <th>Baspoäng/min</th>
+      </tr>
+    </thead>
+
+
+    <tbody>
+
+
+      <ng-container *ngFor="let summary of activities">
+        <tr>
+        <td>{{ summary.activity }}</td>
+        <td>{{ summary.value }}</td>
+      </tr>
+      </ng-container>
+
+    </tbody>
+
+
+  </table>
+  </div>
+
