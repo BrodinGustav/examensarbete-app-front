@@ -26,6 +26,10 @@ export class HeaderComponent implements OnInit{
     this.menuOpen = !this.menuOpen;
   }
 
+  closeMenu(): void {
+    this.menuOpen = false;
+  }
+
 
 
   //Visning av header-element
