@@ -2,25 +2,25 @@
   <h1>App</h1>
 </div>
 <div id="registerForm">
-  <h1>Registrera konto</h1>
+  <h2>Registrera konto</h2>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
     <label for="name">Användarnamn:</label>
     <input id="name" formControlName="name" type="text">
     <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
-      Användarnamn är obligatoriskt.
+      <p style="color:red">Användarnamn är obligatoriskt.</p>
     </div>
 
     <label for="email">E-post:</label>
     <input id="email" formControlName="email" type="email">
     <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
-      Vänligen ange en giltig e-postadress.
+      <p style="color:red">Vänligen ange en giltig e-postadress.</p>
     </div>
 
     <label for="password">Lösenord:</label>
     <input id="password" formControlName="password" type="password">
     <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
-      Lösenordet är obligatoriskt och måste vara minst 6 tecken långt.
+      <p style="color:red">Lösenordet är obligatoriskt och måste vara minst 6 tecken långt.</p>
     </div>
 
     <label for="confirmPassword">Bekräfta lösenord:</label>
@@ -28,12 +28,14 @@
 
     <!-- Felmeddelande om lösenorden inte matchar -->
   <div *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.get('confirmPassword')?.touched">
-    Lösenorden matchar inte.
+    <p style="color:red">Lösenorden matchar inte.</p>
   </div>
 
 
     <button type="submit" [disabled]="registerForm.invalid">Registrera</button>
   </form>
+
+  <p *ngIf="errorMessage" style="color:red">{{ errorMessage }}</p>
 
   <p>Har du redan konto?</p>
   <div class="link">

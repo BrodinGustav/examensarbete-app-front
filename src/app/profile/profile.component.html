@@ -6,6 +6,10 @@
   <p><app-date-only></app-date-only></p>
 </div>
 
+<app-delete-profile-btn
+[id]="userId"
+(deleted)="deleted(userId)"
+></app-delete-profile-btn>
 
 <div class="weeklyTraining">
   <h3>Din träningsvecka</h3>
@@ -26,8 +30,8 @@
         <td>{{ summary.activity }}</td>
         <td>{{ summary.points }}</td>
         <app-delete-activity-btn
-          [id]="summary.activity.id"
-          (deleted)="deleted(summary.activity.id)"
+          [id]="summary.id"
+          (deleted)="deleted(summary.id)"
         ></app-delete-activity-btn>
 
       </tr>

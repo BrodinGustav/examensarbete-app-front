@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class DeleteActivityBtnService {
 
-  private apiUrl ='http://localhost:8080/api/useractivities'; //OBS! Endpoint har ingen CRUD för delete
+  private apiUrl ='http://localhost:8080/api/useractivities';
 ;
 
   constructor(private http:HttpClient) { }

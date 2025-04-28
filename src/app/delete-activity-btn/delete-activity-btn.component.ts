@@ -12,6 +12,7 @@ import { Observable, Subject } from 'rxjs';
 })
 export class DeleteActivityBtnComponent {
 
+
   @Output()
   deleted: Subject<void> = new Subject();
   @Input()
@@ -23,6 +24,5 @@ export class DeleteActivityBtnComponent {
   this.deleteActivityBtnService.deleteActivity(this.id)
   .subscribe(() => this.deleted.next());
 
+  }
 }
-}
-

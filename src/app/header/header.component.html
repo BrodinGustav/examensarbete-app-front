@@ -8,17 +8,17 @@
 
     <h1>App</h1>
 
-    <button class="hamburger-menu" (click)="toggleMenu()"><img src="/bars-solid.svg"></button>
+    <button class="hamburger-menu" (click)="toggleMenu()" aria-label="Öppna meny"><img src="/bars-solid.svg" alt="ikon för mobilmeny"></button>
 
     <ul [ngClass]="{'active': menuOpen}">
 
-      <li><a routerLink="/home" routerLinkActive="current">Startsida</a></li>
+      <li><a [routerLink]="'/home'" routerLinkActive="current" aria-label="Till startsidan">Startsida</a></li>
       <hr>
-      <li><a routerLink="/profile" routerLinkActive="current">Profil</a></li>
+      <li><a [routerLink]="'/profile'" routerLinkActive="current" aria-label="Till profilsidan">Profil</a></li>
       <hr>
-      <li><a routerLink="/list" routerLinkActive="current">Aktiviteter</a></li>
+      <li><a [routerLink]="'/list'" routerLinkActive="current" aria-label="Till aktivitetslistan">Aktiviteter</a></li>
       <hr>
-      <a [routerLink]="'/createActivity'"><button class="add-activity">Lägg till</button></a>
+      <a [routerLink]="'/createActivity'"><button class="add-activity" aria-label="Öppna skapa-aktivitet-meny">Lägg till</button></a>
       <app-log-out></app-log-out>
 
     </ul>

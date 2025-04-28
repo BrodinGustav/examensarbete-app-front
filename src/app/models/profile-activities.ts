@@ -20,10 +20,8 @@ export interface UserApiResponse {
 }
 
 export interface ActivitySummary {
-  activity: {
-    id: number;
-    activity: string;
-    timestamp: string
-  };
+  id: number;
+  activity: string;
+  timestamp: string;
   points: number;
 }

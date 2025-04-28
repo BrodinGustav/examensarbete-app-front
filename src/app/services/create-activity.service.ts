@@ -13,7 +13,7 @@ export class CreateActivityService {
 
   constructor(private http:HttpClient) { }
 
-  //Ska aktivitet
+  //Skapa aktivitet
         registerActivity (activity: CreateActivity): Observable<any> {   //Returnerar observable
          return this.http.post(`${this.apiUrlCreate}`, activity)
 }

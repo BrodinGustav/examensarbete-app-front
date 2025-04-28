@@ -15,6 +15,7 @@ export class LogInComponent {
 
   logInForm: FormGroup;
 
+  errorMessage: string = '';
 
   constructor(private fb: FormBuilder, private loginService: LogInService, private router: Router) {
 
@@ -61,16 +62,22 @@ export class LogInComponent {
 
           } else {
             console.log("Inloggning misslyckades.");
+            this.errorMessage = "Fel användarnamn/lösenord."
+
           }
         },
         error: err => {
           console.error('Inloggning misslyckades:', err);
 
           if (err.status === 401) {
-            console.log("Felaktiga inloggningsuppgifter.");
+            this.errorMessage = err.error?.message || "Fel användarnamn/lösenord.";
 
           } else if (err.status === 500) {
-            console.log("Serverfel.");
+            this.errorMessage = "Serverfel. Försök igen senare.";
+
+          } else {
+
+            this.errorMessage = "Något gick fel. Försök igen.";
           }
         }
       });

@@ -1,5 +1,5 @@
 <div id="registerForm">
-  <h1>Registrera aktivitet</h1>
+  <h2>Registrera aktivitet</h2>
 
   <form (ngSubmit)="submitActivity()">
 
@@ -20,10 +20,10 @@
 
   </form>
 
-  <p *ngIf="successMessage">{{ successMessage }}</p>
+  <p *ngIf="successMessage" style="color:greenyellow">{{ successMessage }}</p>
   <p *ngIf="errorMessage" style="color:red">{{ errorMessage }}</p>
 
   <div class="link">
-    <p>Tillbaka till<a [routerLink]="'/home'"> Poängtavlan</a></p>
+    <p>Tillbaka till<a [routerLink]="'/home'" aria-label="Till poänglistan"> Poängtavlan</a></p>
   </div>
 </div>

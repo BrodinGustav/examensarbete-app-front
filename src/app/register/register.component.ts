@@ -17,6 +17,7 @@ import { RegisterService } from '../services/register.service';
 export class RegisterComponent {
 
   registerForm: FormGroup;
+  errorMessage: string = '';
 
 
 
@@ -68,11 +69,19 @@ onSubmit(): void {
       this.router.navigate(['/login']);
 
     },
-    error: err => {
-      console.error('Registrering misslyckades:', err);
+    error: (errorResponse) => {
+      if (errorResponse.error && errorResponse.error.name) {
+        this.errorMessage = errorResponse.error.name;
+
+      } else {
+
+        this.errorMessage = "Registrering misslyckades"
+      }
     }
   });
 }
   }
 
 }
+
+
