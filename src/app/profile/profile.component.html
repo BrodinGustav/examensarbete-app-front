@@ -1,42 +1,41 @@
 
-<!--<div class="backgroundTrainingSchema">
-  <p>mörk bakgrund</p>
-</div> -->
 <div class="date">
   <p><app-date-only></app-date-only></p>
 </div>
 
-<app-delete-profile-btn
-[id]="userId"
-(deleted)="deleted(userId)"
-></app-delete-profile-btn>
+<app-delete-profile-btn [id]="userId" (deleted)="deleted(userId)"></app-delete-profile-btn>
 
-<div class="weeklyTraining">
-  <h3>Din träningsvecka</h3>
-  <h3><app-current-week></app-current-week></h3>
-  <hr>
-  <table class="weeklyTrainingTable">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Aktivitet</th>
-        <th>Poäng</th>
-      </tr>
-    </thead>
-    <tbody>
-    <ng-container *ngFor="let summary of weeklyPoints, index as i">
+
+  <span *ngIf="loading" class="loader"></span>
+
+
+
+
+<span *ngIf="!loading">
+  <div class="weeklyTraining">
+    <h3>Din träningsvecka</h3>
+    <h3><app-current-week></app-current-week></h3>
+    <hr>
+    <table class="weeklyTrainingTable">
+      <thead>
         <tr>
-        <td>{{i + 1}}</td>
-        <td>{{ summary.activity }}</td>
-        <td>{{ summary.points }}</td>
-        <app-delete-activity-btn
-          [id]="summary.id"
-          (deleted)="deleted(summary.id)"
-        ></app-delete-activity-btn>
+          <th>#</th>
+          <th>Aktivitet</th>
+          <th>Poäng</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let summary of weeklyPoints, index as i">
+          <tr>
 
-      </tr>
-      </ng-container>
-    </tbody>
-  </table>
+            <td>{{i + 1}}</td>
+            <td>{{ summary.activity }}</td>
+            <td>{{ summary.points }}</td>
+            <app-delete-activity-btn [id]="summary.id" (deleted)="deleted(summary.id)"></app-delete-activity-btn>
+
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
   </div>
-
+</span>

@@ -17,22 +17,35 @@ export class HomeComponent {
   //Variabler för att spara poäng från GET
   points: any[] = [];
   topThreeUsers: any[] = [];
+  loading: boolean = true;
 
-  constructor(private leaderboardService: LeaderboardServiceService) {}
+  constructor(private leaderboardService: LeaderboardServiceService) { }
 
 
   //Hämtar användaraktiviteter för top 3 placering i HomeComponent. Prenumenerar från GET i leaderboard.service.ts
   ngOnInit() {
 
     //Prenumererar på datan från service
-    this.leaderboardService.getData().subscribe(data => {
-      this.points = data;
+    this.leaderboardService.getData().subscribe({
+      next: (data) => {
+        this.points = data;
 
 
-  //Sparar tre högsta poäng
-  this.topThreeUsers = data.slice(0, 3);
-})
+        //Sparar tre högsta poäng
+        this.topThreeUsers = data.slice(0, 3);
 
+        this.loading = false;
+
+      },
+      error: (error) => {
+        console.error('Det gick inte att hämta data:', error);
+        this.loading = false;
+
+      }
+
+    });
+
+  }
 }
 
-}
+

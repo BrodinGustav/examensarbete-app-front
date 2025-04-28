@@ -1,36 +1,59 @@
-h3{
+h3 {
   text-align: center;
 }
 
-.activityList{
+.activityList {
   background-color: #F7F7F7;
-  width:80vw;
-  height:auto;
+  width: 80vw;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin:0 auto;
+  margin: 0 auto;
   margin-top: 1em;
-  padding:20px;
+  padding: 20px;
 }
 
-hr{
-  width:60vw;
-  height:1px;
-  color:black;
+hr {
+  width: 60vw;
+  height: 1px;
+  color: black;
 }
 
-.activityListTable{
-  max-width:100%;
+.activityListTable {
+  max-width: 100%;
   text-align: center;
-  padding:1em;
+  padding: 1em;
   border-collapse: collapse;
   table-layout: fixed;
 }
 
- .activityList th {
-   width: 25%;
-   text-align: center;
-   padding: 8px;
+.activityList th {
+  width: 25%;
+  text-align: center;
+  padding: 8px;
+}
+
+
+
+.loader {
+  border: 4px solid #f3f3f3; /* Ljus grå bakgrund */
+  border-top: 4px solid #3498db; /* Blå färg för spinnande linje */
+  border-radius: 50%;
+  display: flex;
+  margin: 0 auto;
+  width: 48px;
+  height: 48px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

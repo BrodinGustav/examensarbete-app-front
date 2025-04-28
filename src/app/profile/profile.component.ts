@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DatePipe, NgFor } from '@angular/common';
+import { CommonModule, DatePipe, NgFor } from '@angular/common';
 import { DateOfDayComponent } from "../date-of-day/date-of-day.component";
 import { ProfileService } from '../services/profile.service';
 import { ActivitySummary } from '../models/profile-activities';
@@ -12,7 +12,7 @@ import { DeleteProfileBtnComponent } from "../delete-profile-btn/delete-profile-
 
 @Component({
   selector: 'app-profile',
-  imports: [NgFor, DateOfDayComponent, DatePipe, CurrentWeekComponent, DateOnlyComponent, DeleteActivityBtnComponent, DeleteProfileBtnComponent],
+  imports: [NgFor, DateOfDayComponent, DatePipe, CurrentWeekComponent, DateOnlyComponent, DeleteActivityBtnComponent, DeleteProfileBtnComponent, CommonModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   //Variabel för att lagra data från GET och hantera id vid delete
  getUser: any;
  userId!: number;
+ loading: boolean = true;
 
  weeklyPoints: ActivitySummary[] = [];
 
@@ -36,12 +37,16 @@ export class ProfileComponent implements OnInit {
         this.weeklyPoints = data;
         console.log('Aktivitet:', this.getUser);
 
+        this.loading = false;
+
         //debugg
         console.log(data);
 
       },
       error: (err) => {
         console.error('Kunde inte hämta aktivitet:', err);
+
+        this.loading = false;
       }
 
     });
