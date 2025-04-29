@@ -12,7 +12,6 @@ export class DeleteActivityBtnService {
 
   constructor(private http:HttpClient) { }
 
-  //Hämtar användaraktiviteter
 
    //Radera användaraktivitet
    deleteActivity(id: number): Observable<any> {

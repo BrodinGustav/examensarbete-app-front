@@ -18,9 +18,10 @@ export class DeleteActivityBtnComponent {
   @Input()
   id!: number;
 
-  constructor(private deleteActivityBtnService: DeleteActivityBtnService) { }
+  constructor(private deleteActivityBtnService: DeleteActivityBtnService) {  }
 
   onDelete(): void {
+    console.log(this.id);
   this.deleteActivityBtnService.deleteActivity(this.id)
   .subscribe(() => this.deleted.next());
 

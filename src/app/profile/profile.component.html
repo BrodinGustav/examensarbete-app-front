@@ -37,5 +37,37 @@
         </ng-container>
       </tbody>
     </table>
+
+    <hr>
+
+    <h4>Detaljerade aktiviteter</h4>
+
+    <table class="weeklyTrainingTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Aktivitet</th>
+          <th>Datum</th>
+          <th>Poäng</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!--Utskrift för enksild aktivit-->
+        <ng-container *ngIf="userData && userData.activities">
+                <ng-container *ngFor="let activity of userData.activities; index as j">
+            <tr>
+              <td>{{ j + 1 }}</td>
+              <td>{{ activity.activity }}</td>
+              <td>{{ activity.timestamp | date:'MM-dd' }}</td>
+              <td>{{ activity.points }}</td>
+              <app-delete-activity-btn [id]="activity.id" (deleted)="deleted(activity.id)"></app-delete-activity-btn>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </tbody>
+
+    </table>
+
   </div>
 </span>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule, DatePipe, NgFor } from '@angular/common';
 import { DateOfDayComponent } from "../date-of-day/date-of-day.component";
 import { ProfileService } from '../services/profile.service';
-import { ActivitySummary } from '../models/profile-activities';
+import { ActivitySummary, UserData } from '../models/profile-activities';
 import { CurrentWeekComponent } from '../current-week/current-week.component';
 import { DateOnlyComponent } from '../date-only/date-only.component';
 import { DeleteActivityBtnComponent } from "../delete-activity-btn/delete-activity-btn.component";
@@ -24,18 +24,25 @@ export class ProfileComponent implements OnInit {
  loading: boolean = true;
 
  weeklyPoints: ActivitySummary[] = [];
+ userData!: UserData; /*Denna är för att hämta in aktivtet för specifik användare. Måste fixa backend dock?*/
 
   constructor(private profileService: ProfileService) { }
 
   ngOnInit() {
+    this.userId = Number(localStorage.getItem('userId'));
+    this.loadUserData();
+    this.loadWeeklyPoints();
+  }
 
     //Hämtar vecknas poäng
-    this.userId = Number(localStorage.getItem('userId'));
 
+    loadWeeklyPoints(){
     this.profileService.getWeeklyPoints(this.userId).subscribe({
       next: (data) => {
         this.weeklyPoints = data;
         console.log('Aktivitet:', this.getUser);
+        console.log('Veckans aktiviteter:', this.weeklyPoints);
+
 
         this.loading = false;
 
@@ -51,6 +58,23 @@ export class ProfileComponent implements OnInit {
 
     });
   }
+
+    loadUserData() {
+      this.profileService.getUserData(this.userId).subscribe({
+        next: (response) => {
+          this.userData = response.data;
+          console.log('Användardata:', this.userData);
+          console.log('Aktiviteter:', this.userData.activities);
+          this.loading = false;
+        },
+        error: (err) => {
+          console.error("Kunde inte hämta användardata:", err);
+          this.loading = false;
+        }
+      })
+    }
+
+
 
 
   //Delete
