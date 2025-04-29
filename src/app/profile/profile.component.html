@@ -31,7 +31,6 @@
             <td>{{i + 1}}</td>
             <td>{{ summary.activity }}</td>
             <td>{{ summary.points }}</td>
-            <app-delete-activity-btn [id]="summary.id" (deleted)="deleted(summary.id)"></app-delete-activity-btn>
 
           </tr>
         </ng-container>
@@ -45,7 +44,6 @@
     <table class="weeklyTrainingTable">
       <thead>
         <tr>
-          <th>#</th>
           <th>Aktivitet</th>
           <th>Datum</th>
           <th>Poäng</th>
@@ -55,9 +53,8 @@
 
         <!--Utskrift för enksild aktivit-->
         <ng-container *ngIf="userData && userData.activities">
-                <ng-container *ngFor="let activity of userData.activities; index as j">
+                <ng-container *ngFor="let activity of userData.activities">
             <tr>
-              <td>{{ j + 1 }}</td>
               <td>{{ activity.activity }}</td>
               <td>{{ activity.timestamp | date:'MM-dd' }}</td>
               <td>{{ activity.points }}</td>

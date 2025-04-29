@@ -10,24 +10,18 @@ import { Router } from '@angular/router';
 export class DeleteProfileBtnService {
 
   private apiUrl ='http://localhost:8080/api/users'
- boolSnurra: boolean = false;
+
 
   constructor(private http:HttpClient, private router: Router) { }
 
 
-  //Radera användare                                            OBS! KOLLA VARFÖR RETURN INTE FUNGERAR FÖR SUBSCRIPTION
- /* deleteProfile(id: number): Observable<UserProfile[]> {
-    this.boolSnurra = true;
-    return this.http.delete<UserProfile[]>(`${this.apiUrl}/${id}`)
-    .subscribe(() => {
-      this.boolSnurra = false;
+  //Radera användare
+  deleteProfile(id: number): Observable<UserProfile> {
 
-      localStorage.clear();
-      this.router.navigate(['/register']);
-    });
+    return this.http.delete<UserProfile>(`${this.apiUrl}/${id}`);
 
 
-  }*/
+  }
 }
 
 
