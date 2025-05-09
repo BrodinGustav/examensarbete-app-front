@@ -1,0 +1,13 @@
+<h2>Träningsstatistik</h2>
+
+
+<div *ngIf="!loading"  class="chart-container">
+
+  <canvas baseChart
+          [data]="pieChartData"
+          [type]="pieChartType">
+  </canvas>
+</div>
+
+
+<div *ngIf="loading">Laddar data...</div>

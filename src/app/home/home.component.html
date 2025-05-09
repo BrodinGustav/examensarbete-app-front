@@ -1,34 +1,44 @@
 <div class="headlines">
-<h2>Poängtavla</h2>
-<app-date-of-day></app-date-of-day>
+  <h2>Poängtavla</h2>
+  <app-date-of-day></app-date-of-day>
 </div>
 
 
-  <span *ngIf="loading" class="loader"></span>
+<span *ngIf="loading" class="loader"></span>
 
 <span *ngIf="!loading">
-<div class="firstPlaceContainer">
-<div class="leader" *ngIf="topThreeUsers.length > 0 && topThreeUsers[0]?.points">
-   <p *ngIf="topThreeUsers.length > 0">{{ topThreeUsers[0].name }}</p>
-  <p>{{ topThreeUsers[0].points }} poäng</p>
+  <div class="firstPlaceContainer">
+
+    <!--Visa bara om det finns minst en användare-->
+    <div class="leader" *ngIf="topThreeUsers.length > 0 && topThreeUsers[0]?.points">
+
+      <!--Visar namn och poäng för användare på första plats.-->
+      <p *ngIf="topThreeUsers.length > 0">{{ topThreeUsers[0].name }}</p>
+
+      <p>{{ topThreeUsers[0].points }} poäng</p>
+    </div>
   </div>
-</div>
 
-<div class="secondThirdPlaceDiv">
+  <div class="secondThirdPlaceDiv">
+    <!-- Visa om det finns minst två användare -->
+    <div class="second" *ngIf="topThreeUsers.length > 1 && topThreeUsers[1]?.points">
 
-  <div class="second" *ngIf="topThreeUsers.length > 1 && topThreeUsers[1]?.points">
-   <p *ngIf="topThreeUsers.length > 1">{{ topThreeUsers[1].name }}</p>
-  <p>{{ topThreeUsers[1].points }} poäng</p>
-</div>
+      <!--Visa namn och poäng för användare på andra plats.-->
+      <p *ngIf="topThreeUsers.length > 1">{{ topThreeUsers[1].name }}</p>
+      <p>{{ topThreeUsers[1].points }} poäng</p>
+    </div>
 
-<div class="third" *ngIf="topThreeUsers.length > 2 && topThreeUsers[2]?.points">
-<p *ngIf="topThreeUsers.length > 2">{{ topThreeUsers[2].name }}</p>
-<p>{{ topThreeUsers[2].points }} poäng</p>
-</div>
-</div>
+    <!--Visa om det finns minst tre användare-->
+    <div class="third" *ngIf="topThreeUsers.length > 2 && topThreeUsers[2]?.points">
+
+      Visar namn och poäng för användare på tredje plats.
+      <p *ngIf="topThreeUsers.length > 2">{{ topThreeUsers[2].name }}</p>
+
+      <p>{{ topThreeUsers[2].points }} poäng</p>
+    </div>
+  </div>
 
 
-<app-leader-board></app-leader-board>
+  <app-leader-board></app-leader-board>
 
 </span>
-

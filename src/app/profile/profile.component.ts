@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
  loading: boolean = true;
 
  weeklyPoints: ActivitySummary[] = [];
- userData!: UserData; /*Denna är för att hämta in aktivtet för specifik användare. Måste fixa backend dock?*/
+ userData!: UserData; /*Hämta in aktivtet för specifik användare.*/
 
   constructor(private profileService: ProfileService) { }
 
@@ -78,7 +78,7 @@ export class ProfileComponent implements OnInit {
 
 
   //Delete
-  deleted = (id: number) => {                                         //Det här känns fel. Stämmer denna delete för radering av aktivitet? delete-activit-btn har annan delete. Eller uppdaterar den bara listan efter radering?
+  deleted = (id: number) => {
     this.profileService.getWeeklyPoints(this.userId).subscribe({
       next: (data) => {
         this.weeklyPoints = data;

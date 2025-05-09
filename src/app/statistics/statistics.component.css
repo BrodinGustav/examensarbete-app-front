@@ -1,0 +1,11 @@
+h2{
+  text-align: center;
+}
+
+.chart-container{
+  max-width: 100%;
+  display: flex;
+  margin:0 auto;
+  width:20em;
+  height:auto;
+}
