@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';  // Importera miljövariable
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeleteActivityBtnService {
 
-  private apiUrl ='http://localhost:8080/api/useractivities';
+  private apiUrl =`${environment.apiUrl}/api/useractivities`;
 ;
 
   constructor(private http:HttpClient) { }

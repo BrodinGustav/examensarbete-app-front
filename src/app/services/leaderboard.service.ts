@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LeaderboardUser } from '../models/leaderboard-user';
+import { environment } from '../environments/environment';  // Importera miljövariable
 
 @Injectable({
   providedIn: 'root'
 })
 export class LeaderboardServiceService {
 
-  private apiUrl ='http://localhost:8080/api/useractivities/stream';
+  private apiUrl =`${environment.apiUrl}/api/useractivities/stream`;
 
   constructor(private http:HttpClient) { }
 

@@ -45,9 +45,13 @@ export class HeaderComponent implements OnInit{
 
 
   ngOnInit(): void {
+    this.loadUserNameInHeader();
+  }
+
+
 
 //Utskrift av användarnamn till headern
-
+  loadUserNameInHeader(){
     this.userEmail = localStorage.getItem('email');
 
     //GET

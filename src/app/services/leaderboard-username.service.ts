@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LeaderboardUser } from '../models/leaderboard-user';
+import { environment } from '../environments/environment';  // Importera miljövariable
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import { LeaderboardUser } from '../models/leaderboard-user';
 })
 export class LeaderboardUsernameService {
 
-  private apiUrl ='http://localhost:8080:/api/users';
+  private apiUrl =`${environment.apiUrl}/api/users`;
 
   constructor(private http:HttpClient) { }
 

@@ -17,7 +17,10 @@ export class ActivityListComponent implements OnInit {
    constructor(private activityListSerivce: ActivityListService) { }
 
    ngOnInit() {
+    this.loadActivities();
+   }
 
+   loadActivities(){
     this.activityListSerivce.getActivities().subscribe({
       next: (data) => {
         this.activities = data;

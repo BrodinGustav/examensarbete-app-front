@@ -2,14 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CreateActivity } from '../models/create-activity';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';  // Importera miljövariable
 
 @Injectable({
   providedIn: 'root'
 })
 export class CreateActivityService {
 
-  private apiUrlCreate ='http://localhost:8080/api/useractivities/create';
-  private apiUrlFetch ='http://localhost:8080/api/activities';
+  private apiUrlCreate =`${environment.apiUrl}/api/useractivities/create`;
+  private apiUrlFetch =`${environment.apiUrl}/api/activities`;
 
   constructor(private http:HttpClient) { }
 

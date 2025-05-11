@@ -24,7 +24,11 @@ export class HomeComponent {
 
   //Hämtar användaraktiviteter för top 3 placering i HomeComponent. Prenumenerar från GET i leaderboard.service.ts
   ngOnInit() {
+    this.leadLeaderboardData();
+  }
 
+
+  leadLeaderboardData(){
     //Prenumererar på datan från service
     this.leaderboardService.getData().subscribe({
       next: (data) => {

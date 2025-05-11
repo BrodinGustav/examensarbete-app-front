@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivitySummary, UserApiResponse, UserData  } from '../models/profile-activities';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';  // Importera miljövariabler
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
 
-  private apiUrl ='http://localhost:8080/api/users';
+  private apiUrl =`${environment.apiUrl}/api/users`;
 
 
 

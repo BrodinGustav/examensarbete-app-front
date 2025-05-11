@@ -20,12 +20,16 @@ export class LeaderBoardComponent {
   constructor(private leaderboardService: LeaderboardServiceService) {}
 
   ngOnInit() {
+    this.loadLeaderboardData();
+  }
 
+  loadLeaderboardData(){
     //Hämtar data för utskrift till HomeComponent
     this.leaderboardService.getData().subscribe({
       next: (data) => this.points = data,
       error: () => console.error("Kunde inte hämta data till leaderboard.")
     });
 
+    }
 }
-}
+

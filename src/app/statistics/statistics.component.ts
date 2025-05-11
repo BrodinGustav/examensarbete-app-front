@@ -26,15 +26,15 @@ export class StatisticsComponent implements OnInit {
     };
 
 
-  constructor(
-    private profileService: ProfileService,
-  ) {}
+  constructor(private profileService: ProfileService) { }
 
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.userId = Number(localStorage.getItem('userId'));
+      this.loadUserData();
+  }
 
-
+     loadUserData() {
     this.profileService.getUserData(this.userId).subscribe({
       next: (response) => {
         this.userData = response.data;
@@ -53,4 +53,5 @@ export class StatisticsComponent implements OnInit {
     });
 
   }
-}
+
+  }

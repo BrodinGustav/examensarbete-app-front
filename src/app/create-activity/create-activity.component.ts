@@ -33,14 +33,18 @@ export class CreateActivityComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.getActivities();
+  }
 
 
     //Hämtar in aktiviter DB
+    getActivities(){
     this.createActivityService.getActivities().subscribe({
       next: (data) => this.availableActivities = data,
       error: () => this.errorMessage = "Kunde inte hämta aktiviteter"
     });
   }
+
 
   //Skapar aktivitet
   submitActivity() {
