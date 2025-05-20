@@ -37,8 +37,8 @@ export class CreateActivityComponent implements OnInit {
   }
 
 
-    //Hämtar in aktiviter DB
-    getActivities(){
+  //Hämtar in aktiviter DB
+  getActivities() {
     this.createActivityService.getActivities().subscribe({
       next: (data) => this.availableActivities = data,
       error: () => this.errorMessage = "Kunde inte hämta aktiviteter"
@@ -49,6 +49,18 @@ export class CreateActivityComponent implements OnInit {
   //Skapar aktivitet
   submitActivity() {
     const userId = Number(localStorage.getItem('userId'));
+
+    //Kontrollera att datum inte ligger i framtiden
+    const selected = new Date(this.selectedDate);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); //Nollställer tid för att bara jämföra datumen
+    selected.setHours(0, 0, 0, 0);
+
+    if (selected > today) {
+      this.errorMessage = "Du kan inte lägga till en aktivitet i framtiden.";
+      this.successMessage = '';
+      return;
+    }
 
     const newActivity: CreateActivity = {
       userId: userId,

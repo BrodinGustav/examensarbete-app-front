@@ -78,7 +78,9 @@ export class ProfileComponent implements OnInit {
 
 
   //Delete
-  deleted = (id: number) => {
+  deleted = (activityId: number) => {
+
+    //uppdaterar klumpsumma
     this.profileService.getWeeklyPoints(this.userId).subscribe({
       next: (data) => {
         this.weeklyPoints = data;
@@ -92,5 +94,12 @@ export class ProfileComponent implements OnInit {
         console.error('Kunde inte hämta aktivitet:', err);
       }
     });
+
+    //Tar bort aktivitet direkt från listan
+    if (this.userData && this.userData.activities) {
+    this.userData.activities = this.userData.activities.filter(
+      activity => activity.id !== activityId
+    );
   }
 }
+};
