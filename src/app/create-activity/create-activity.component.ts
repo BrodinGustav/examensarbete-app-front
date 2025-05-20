@@ -50,6 +50,12 @@ export class CreateActivityComponent implements OnInit {
   submitActivity() {
     const userId = Number(localStorage.getItem('userId'));
 
+    if (!this.selectedDate || !this.selectedActivity || !this.selectedDuration) {
+      this.errorMessage = "Alla fält måste fyllas i.";
+      this.successMessage = '';
+      return;
+    }
+
     //Kontrollera att datum inte ligger i framtiden
     const selected = new Date(this.selectedDate);
     const today = new Date();
