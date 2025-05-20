@@ -4,6 +4,8 @@
   margin-top:5em;
   border-radius: 20%;
   box-shadow: 5px 10px 20px gray;
+   max-height: 400px;
+   overflow-y: auto;
 }
 
 

@@ -8,13 +8,13 @@
         <label for="email">E-post:</label>
     <input id="email" formControlName="email" type="email">
     <div *ngIf="logInForm.get('email')?.invalid && logInForm.get('email')?.touched">
-      Vänligen ange en giltig e-postadress.
+       <p style="color:red">Vänligen ange en giltig e-postadress.</p>
     </div>
 
     <label for="password">Lösenord:</label>
     <input id="password" formControlName="password" type="password">
     <div *ngIf="logInForm.get('password')?.invalid && logInForm.get('password')?.touched">
-      Lösenordet är obligatoriskt och måste vara minst 6 tecken långt.
+       <p style="color:red">Lösenordet är obligatoriskt och måste vara minst 6 tecken långt.</p>
     </div>
 
 
