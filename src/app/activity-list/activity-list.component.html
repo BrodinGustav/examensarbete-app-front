@@ -2,20 +2,21 @@
 
 
 <span *ngIf="!loading">
-  <div class="activityList">
-    <h2>Aktivitetslista</h2>
+  <section class="section">
+    <div class="container box has-background-light">
+
+    <h2 class="title is-4 has-text-centered">Aktivitetslista</h2>
     <hr>
-    <table class="activityListTable">
+
+     <div class="table-container">
+    <table class="table is-fullwidth is-striped is-hoverable is-bordered has-text-centered">
       <thead>
         <tr>
           <th>Aktivitet</th>
           <th>Baspoäng/min</th>
         </tr>
       </thead>
-
-
       <tbody>
-
 
         <ng-container *ngFor="let summary of activities">
           <tr>
@@ -23,11 +24,9 @@
             <td>{{ summary.value }}</td>
           </tr>
         </ng-container>
-
       </tbody>
-
-
     </table>
   </div>
-
+   </div>
+  </section>
 </span>

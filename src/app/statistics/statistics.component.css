@@ -1,11 +1,13 @@
-h2{
-  text-align: center;
-}
 
 .chart-container{
   max-width: 100%;
-  display: flex;
   margin:0 auto;
   width:20em;
   height:auto;
+}
+
+.chart-wrapper {
+  width: 20em;
+  height: 20em;
+  position: relative;
 }

@@ -1,24 +1,29 @@
-
-<div class="leaderBoard">
-  <h3><app-current-week></app-current-week></h3>
-  <hr>
-  <table class="tableScore">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Namn</th>
-        <th>Poäng</th>
-      </tr>
-    </thead>
-    <tbody>
-      <ng-container *ngFor="let user of points; index as i">
-        <tr>
-        <td>{{i + 1}}</td>
-        <td>{{user.name || 'Anonym'}}</td>
-        <td>{{user.points}}</td>
-      </tr>
-      </ng-container>
-    </tbody>
-  </table>
-  <hr>
+<div class="leaderboard-wrapper">
+  <div class="container is-flex is-justify-content-center is-align-items-center">
+    <div class="column is-12-mobile is-8-tablet is-6-desktop">
+      <div class="leaderBoard">
+        <h3><app-current-week></app-current-week></h3>
+        <hr>
+        <table class="tableScore table is-fullwidth is-striped">
+          <thead>
+            <tr>
+              <th class="has-text-centered">#</th>
+              <th class="has-text-centered">Namn</th>
+              <th class="has-text-centered">Poäng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let user of points; index as i">
+              <tr>
+                <td class="has-text-centered">{{i + 1}}</td>
+                <td class="has-text-centered">{{user.name || 'Anonym'}}</td>
+                <td class="has-text-centered">{{user.points}}</td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+        <hr>
+      </div>
+    </div>
   </div>
+</div>

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CreateActivity } from '../models/create-activity';
 import { Observable } from 'rxjs';
@@ -16,11 +16,23 @@ export class CreateActivityService {
 
   //Skapa aktivitet
         registerActivity (activity: CreateActivity): Observable<any> {   //Returnerar observable
-         return this.http.post(`${this.apiUrlCreate}`, activity)
+           const token = localStorage.getItem('jwt-token')
+
+       const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+          return this.http.post(`${this.apiUrlCreate}`, activity, { headers })
 }
 
   //Hämta tillgängliga aktiviteter från DB
   getActivities(): Observable<{ activity: string }[]> {
-    return this.http.get<{ activity: string }[]>(`${this.apiUrlFetch}`)
+     const token = localStorage.getItem('jwt-token')
+
+       const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<{ activity: string }[]>(`${this.apiUrlFetch}`, { headers })
   }
 }

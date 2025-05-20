@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RegisterRequest } from '../models/register-request';
 import { Observable } from 'rxjs';
@@ -15,6 +15,12 @@ export class RegisterService {
 
     //Skickar poster till API
       register (data: RegisterRequest): Observable<any> {   //Returnerar observable
-       return this.http.post(`${this.apiUrl}`, data)
+        const token = localStorage.getItem('jwt-token')
+
+       const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+        return this.http.post(`${this.apiUrl}`, data, { headers })
 }
 }

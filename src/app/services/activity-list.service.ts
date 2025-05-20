@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivityList } from '../models/activity-list';
@@ -16,7 +16,13 @@ export class ActivityListService {
 
   //Hämta aktiviteter från API
      getActivities(): Observable<ActivityList[]> {
-        return this.http.get<ActivityList[]>(`${this.apiUrl}`);
+       const token = localStorage.getItem('jwt-token')
+
+       const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+        return this.http.get<ActivityList[]>(`${this.apiUrl}`, { headers });
       }
 }
 

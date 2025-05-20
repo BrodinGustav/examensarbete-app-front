@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LeaderboardUser } from '../models/leaderboard-user';
@@ -15,6 +15,14 @@ export class LeaderboardServiceService {
 
    //Hämta användaraktiviteter från API
     getData(): Observable<LeaderboardUser[]> {   //Kontrollerar datan mot interface, returnerar observable
-      return this.http.get<LeaderboardUser[]>(this.apiUrl);
+      const token = localStorage.getItem('jwt-token')
+
+       const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+      return this.http.get<LeaderboardUser[]>(this.apiUrl, { headers });
     }
 }
+
+

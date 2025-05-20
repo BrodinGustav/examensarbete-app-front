@@ -1,7 +1,7 @@
-
-<div class="date">
+<div class="section">
+  <div class="container has-text-centered">
+    <p class="mb-4 has-text-weight-semibold is-size-5">
   <p><app-date-only></app-date-only></p>
-</div>
 
 <app-delete-profile-btn [id]="userId" (deleted)="deleted(userId)"></app-delete-profile-btn>
 
@@ -12,11 +12,12 @@
 
 
 <span *ngIf="!loading">
-  <div class="weeklyTraining">
-    <h3>Din träningsvecka</h3>
-    <h3><app-current-week></app-current-week></h3>
+  <div class="box has-background-light">
+    <h3 clss="title is-4">Din träningsvecka</h3>
+    <h3 class="subtitle is-5"><app-current-week></app-current-week></h3>
     <hr>
-    <table class="weeklyTrainingTable">
+    <div class="table-container">
+    <table class="table is-fullwidth is-striped is-hoverable has-text-centered">
       <thead>
         <tr>
           <th>#</th>
@@ -36,17 +37,17 @@
         </ng-container>
       </tbody>
     </table>
-
+</div>
     <hr>
 
-    <h4>Detaljerade aktiviteter</h4>
-
-    <table class="weeklyTrainingTable">
+    <h4 class="title is-5">Detaljerade aktiviteter</h4>
+    <div class="table-container">
+    <table class="table is-fullwidth is-bordered is-hoverable has-text-centered">
       <thead>
         <tr>
-          <th>Aktivitet</th>
-          <th>Datum</th>
-          <th>Poäng</th>
+          <th class="has-text-centered">Aktivitet</th>
+          <th class="has-text-centered">Datum</th>
+          <th class="has-text-centered">Poäng</th>
         </tr>
       </thead>
       <tbody>
@@ -55,9 +56,9 @@
         <ng-container *ngIf="userData && userData.activities">
                 <ng-container *ngFor="let activity of userData.activities">
             <tr>
-              <td>{{ activity.activity }}</td>
-              <td>{{ activity.timestamp | date:'MM-dd' }}</td>
-              <td>{{ activity.points }}</td>
+              <td class="has-text-centered">{{ activity.activity }}</td>
+              <td class="has-text-centered">{{ activity.timestamp | date:'MM-dd' }}</td>
+              <td class="has-text-centered">{{ activity.points }}</td>
               <app-delete-activity-btn [id]="activity.id" (deleted)="deleted(activity.id)"></app-delete-activity-btn>
             </tr>
           </ng-container>
@@ -65,6 +66,7 @@
       </tbody>
 
     </table>
+    </div>
 
   </div>
 </span>

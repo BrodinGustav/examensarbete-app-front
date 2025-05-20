@@ -1,34 +1,47 @@
+
 <header>
+
+  <h1 class="title is-3 has-text-centered mt-0">App</h1>
+
   <!-- Visa navigationen om showNavigation är true -->
   <nav *ngIf="showNavigation">
 
+
+      <div class="column is-narrow">
     <div class="logo">
       <p *ngIf="name">{{name}}</p>
-      </div>
+    </div>
+     </div>
 
-    <h1>App</h1>
+    <button class="hamburger-menu is-hidden-tablet"  (click)="toggleMenu()" aria-label="Öppna meny">
 
-    <button class="hamburger-menu" (click)="toggleMenu()" aria-label="Öppna meny">
-
-    <span *ngIf="!menuOpen"><img src="/bars-solid.svg" alt="ikon för mobilmeny"></span>
-    <span *ngIf="menuOpen"><img src="/xmark-solid.svg" alt="ikon för öppen mobilmeny"></span>
+      <span *ngIf="!menuOpen"><img src="/bars-solid.svg" alt="ikon för mobilmeny"></span>
+      <span *ngIf="menuOpen"><img src="/xmark-solid.svg" alt="ikon för öppen mobilmeny"></span>
 
     </button>
 
     <ul [ngClass]="{'active': menuOpen}">
 
-      <li><a [routerLink]="'/home'" (click)="closeMenu()" routerLinkActive="current" aria-label="Till startsidan">Startsida</a></li>
+      <li><a [routerLink]="'/home'" (click)="closeMenu()" routerLinkActive="current"
+          aria-label="Till startsidan">Startsida</a></li>
       <hr>
-      <li><a [routerLink]="'/profile'" (click)="closeMenu()" routerLinkActive="current" aria-label="Till profilsidan">Profil</a></li>
+      <li><a [routerLink]="'/profile'" (click)="closeMenu()" routerLinkActive="current"
+          aria-label="Till profilsidan">Profil</a></li>
       <hr>
-      <li><a [routerLink]="'/list'" (click)="closeMenu()" routerLinkActive="current" aria-label="Till aktivitetslistan">Aktiviteter</a></li>
+      <li><a [routerLink]="'/list'" (click)="closeMenu()" routerLinkActive="current"
+          aria-label="Till aktivitetslistan">Aktiviteter</a></li>
       <hr>
-      <li><a [routerLink]="'/statistics'" (click)="closeMenu()" routerLinkActive="current" aria-label="Till statistiksidan">Statistik</a></li>
+      <li><a [routerLink]="'/statistics'" (click)="closeMenu()" routerLinkActive="current"
+          aria-label="Till statistiksidan">Statistik</a></li>
       <hr>
-      <a [routerLink]="'/createActivity'"><button class="add-activity" aria-label="Öppna skapa-aktivitet-meny">Lägg till</button></a>
+      <a [routerLink]="'/createActivity'"><button class="button is-link mb-3" aria-label="Öppna skapa-aktivitet-meny">Lägg
+          till</button></a>
+
       <app-log-out></app-log-out>
 
     </ul>
   </nav>
+
+
 
 </header>

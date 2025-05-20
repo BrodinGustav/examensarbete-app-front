@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserProfile } from '../models/user-profile';
@@ -18,8 +18,13 @@ export class DeleteProfileBtnService {
 
   //Radera användare
   deleteProfile(id: number): Observable<UserProfile> {
+      const token = localStorage.getItem('jwt-token')
 
-    return this.http.delete<UserProfile>(`${this.apiUrl}/${id}`);
+       const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.delete<UserProfile>(`${this.apiUrl}/${id}`, { headers });
 
 
   }

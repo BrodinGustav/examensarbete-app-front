@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivitySummary, UserApiResponse, UserData  } from '../models/profile-activities';
 import { Observable } from 'rxjs';
@@ -18,11 +18,24 @@ export class ProfileService {
 
    //Hämta användaraktiviteter i gupperad form från API
    getWeeklyPoints(id: number): Observable<ActivitySummary[]> {   //Kontrollerar datan mot interface, returnerar observable
-      return this.http.get<ActivitySummary[]>(`${this.apiUrl}/${id}/weekly-activity-points`);
+        const token = localStorage.getItem('jwt-token')
+
+       const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+
+    return this.http.get<ActivitySummary[]>(`${this.apiUrl}/${id}/weekly-activity-points`, { headers });
     }
 
     //Hämntning av alla aktiviteter för användaren
     getUserData(id: number): Observable<{ message: string; data: UserData }> {
-      return this.http.get<{ message: string; data: UserData }>(`${this.apiUrl}/${id}`);
+          const token = localStorage.getItem('jwt-token')
+
+       const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+      return this.http.get<{ message: string; data: UserData }>(`${this.apiUrl}/${id}`, { headers });
     }
 }

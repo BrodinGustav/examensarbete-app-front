@@ -1,12 +1,16 @@
-<h2>Träningsstatistik</h2>
+<section class="section">
+  <div class="container has-text-centered">
+<h2 class="title is-4">Träningsstatistik</h2>
 
 
-<div *ngIf="!loading"  class="chart-container">
+<div *ngIf="!loading"  class="box is-flex is-justify-content-center is-align-items-center" style="padding: 2em;">
 
+   <div class="chart-wrapper">
   <canvas baseChart
           [data]="pieChartData"
           [type]="pieChartType">
   </canvas>
+</div>
 </div>
 
 

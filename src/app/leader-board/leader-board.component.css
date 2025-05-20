@@ -1,21 +1,16 @@
 .leaderBoard{
-  max-width:100%;
   background-color: #BFEDCC;
-  text-align: center;
   padding:1em;
   margin-top:5em;
+  border-radius: 20%;
+  box-shadow: 5px 10px 20px gray;
 }
 
-.tableScore{
- max-width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-  margin: 0 auto;
 
+.tableScore td,
+.tableScore th,
+.tableScore {
+  background-color: #BFEDCC;
+  border: none !important;
 }
 
-.tableScore th {
-  width: 25%;
-  text-align: center;
-  padding: 8px;
-}

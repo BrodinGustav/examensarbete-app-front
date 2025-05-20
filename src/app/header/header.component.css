@@ -1,19 +1,17 @@
 header{
   max-width:100%;
+   background: linear-gradient(to right, rgb(221, 177, 0), #FFCD45);
 }
-
 
 .logo{
   display: flex;
   align-items: center;
   border-radius: 50%;
   background-color: #FFFF;
-  width:60px;
-  height:60px;
+  width:5em;
+  height:5em;
   padding:1em;
 }
-
-
 
 
 nav {
@@ -65,8 +63,8 @@ button.add-activity {
 }
 
 .hamburger-menu img {
-  width: 30px;
-  height: 30px;
+  width: 1.5em;
+  height: 1.5em;
   display: block;
 }
 
@@ -80,12 +78,13 @@ button.add-activity {
   ul {
     display: none;
     position: absolute;
-    top: 80px;
+    top: 10em;
     right: 10px;
     background-color: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    z-index:1;
   }
 
   ul.active {
@@ -103,3 +102,25 @@ button.add-activity {
   }
 
 }
+
+@media (min-width: 769px) {
+
+  ul {
+    display: flex;
+    position: static;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+ul{
+    background: none;
+}
+
+
+
+  button.add-activity {
+    width: auto;
+    margin-top: 0;
+  }
+}
+

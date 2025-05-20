@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserNameInHeader } from '../models/user-name-in-header';
 import { Observable } from 'rxjs';
@@ -16,7 +16,13 @@ export class UserNameInHeaderService {
 
   //Hämta poster från API
   getAllUsers(): Observable<UserNameInHeader[]> {   //Kontrollerar datan mot interface, returnerar observable
-      return this.http.get<UserNameInHeader[]>(this.apiUrl);
+     const token = localStorage.getItem('jwt-token')
+
+       const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<UserNameInHeader[]>(this.apiUrl, { headers });
     }
 
 }

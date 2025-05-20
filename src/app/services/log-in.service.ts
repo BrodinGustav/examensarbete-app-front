@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LogInRequest } from '../models/log-in-request';
@@ -20,7 +20,13 @@ export class LogInService {
 
   //Skickar poster till API
   login(data: LogInRequest): Observable<any> {   //Använder interface, Returnerar observable
-    return this.http.post(`${this.apiUrl}`, data)
+    const token = localStorage.getItem('jwt-token')
+
+       const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.post(`${this.apiUrl}`, data, { headers })
   }
 
 }
