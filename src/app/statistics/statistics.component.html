@@ -6,6 +6,12 @@
 <div *ngIf="!loading"  class="box is-flex is-justify-content-center is-align-items-center" style="padding: 2em;">
 
    <div class="chart-wrapper">
+
+    <div *ngIf="!loading && userData?.activities?.length === 0" class="notification is-warning">
+  Ingen statistik hittad.
+</div>
+
+
   <canvas baseChart
           [data]="pieChartData"
           [type]="pieChartType">
