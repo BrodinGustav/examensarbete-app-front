@@ -62,9 +62,6 @@ onSubmit(): void {
   this.registerService.register(data).subscribe({
     next: response => {
 
-      console.log('Godkänd registrering!', response);
-      console.log('E-post från backend-svar:', response.email);
-
       //Skicka vidare användare
       this.router.navigate(['/login']);
 

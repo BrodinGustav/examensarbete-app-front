@@ -26,7 +26,7 @@ export class DeleteProfileBtnComponent {
 
     this.loading = true;
 
-    this.deleteProfileBtnService.deleteProfile(this.id).subscribe({
+    this.deleteProfileBtnService.deleteProfile().subscribe({
       next: () => {
         this.deleted.next();
         localStorage.clear();

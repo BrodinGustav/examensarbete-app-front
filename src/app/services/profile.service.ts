@@ -9,7 +9,7 @@ import { environment } from '../environments/environment';  // Importera miljöv
 })
 export class ProfileService {
 
-  private apiUrl =`${environment.apiUrl}/api/users`;
+  private apiUrl =`${environment.apiUrl}/api/users/me`;
 
 
 
@@ -17,7 +17,7 @@ export class ProfileService {
 
 
    //Hämta användaraktiviteter i gupperad form från API
-   getWeeklyPoints(id: number): Observable<ActivitySummary[]> {   //Kontrollerar datan mot interface, returnerar observable
+   getWeeklyPoints(): Observable<ActivitySummary[]> {   //Kontrollerar datan mot interface, returnerar observable
         const token = localStorage.getItem('jwt-token')
 
        const headers = new HttpHeaders({
@@ -25,17 +25,17 @@ export class ProfileService {
     });
 
 
-    return this.http.get<ActivitySummary[]>(`${this.apiUrl}/${id}/weekly-activity-points`, { headers });
+    return this.http.get<ActivitySummary[]>(`${this.apiUrl}/weekly-activity-points`, { headers });
     }
 
     //Hämntning av alla aktiviteter för användaren
-    getUserData(id: number): Observable<{ message: string; data: UserData }> {
+    getUserData(): Observable<{ message: string; data: UserData }> {
           const token = localStorage.getItem('jwt-token')
 
        const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
 
-      return this.http.get<{ message: string; data: UserData }>(`${this.apiUrl}/${id}`, { headers });
+      return this.http.get<{ message: string; data: UserData }>(`${this.apiUrl}`, { headers });
     }
 }

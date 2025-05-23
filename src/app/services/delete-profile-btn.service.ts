@@ -10,21 +10,21 @@ import { environment } from '../environments/environment';  // Importera miljöv
 })
 export class DeleteProfileBtnService {
 
-  private apiUrl =`${environment.apiUrl}/api/users`;
+  private apiUrl =`${environment.apiUrl}/api/users/me`;
 
 
   constructor(private http:HttpClient, private router: Router) { }
 
 
   //Radera användare
-  deleteProfile(id: number): Observable<UserProfile> {
+  deleteProfile(): Observable<UserProfile> {
       const token = localStorage.getItem('jwt-token')
 
        const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
 
-    return this.http.delete<UserProfile>(`${this.apiUrl}/${id}`, { headers });
+    return this.http.delete<UserProfile>(`${this.apiUrl}`, { headers });
 
 
   }

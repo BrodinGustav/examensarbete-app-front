@@ -43,16 +43,11 @@ export class LogInComponent {
       this.loginService.login(data).subscribe({
         next: response => {
 
-          console.log('Inloggning svar från server:', response);
-
           //Om JWT finns
           if (response && response['jwt-token']) {
 
 
             localStorage.setItem('email', this.logInForm.value.email);
-            console.log("Email lagrat i localStorage:", this.logInForm.value.email);
-            console.log('Godkänd Inlogg!', response);
-
             localStorage.setItem('userId', response.id.toString());
             localStorage.setItem('jwt-token', response['jwt-token']);
 

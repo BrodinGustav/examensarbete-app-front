@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
     //Hämtar vecknas poäng
 
     loadWeeklyPoints(){
-    this.profileService.getWeeklyPoints(this.userId).subscribe({
+    this.profileService.getWeeklyPoints().subscribe({
       next: (data) => {
         this.weeklyPoints = data;
         console.log('Aktivitet:', this.getUser);
@@ -60,7 +60,7 @@ export class ProfileComponent implements OnInit {
   }
 
     loadUserData() {
-      this.profileService.getUserData(this.userId).subscribe({
+      this.profileService.getUserData().subscribe({
         next: (response) => {
           this.userData = response.data;
           console.log('Användardata:', this.userData);
@@ -81,7 +81,7 @@ export class ProfileComponent implements OnInit {
   deleted = (activityId: number) => {
 
     //uppdaterar klumpsumma
-    this.profileService.getWeeklyPoints(this.userId).subscribe({
+    this.profileService.getWeeklyPoints().subscribe({
       next: (data) => {
         this.weeklyPoints = data;
         console.log('Aktivitet:', this.getUser);

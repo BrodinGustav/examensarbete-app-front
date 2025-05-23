@@ -35,7 +35,7 @@ export class StatisticsComponent implements OnInit {
   }
 
      loadUserData() {
-    this.profileService.getUserData(this.userId).subscribe({
+    this.profileService.getUserData().subscribe({
       next: (response) => {
         this.userData = response.data;
         console.log('Användardata:', this.userData);
