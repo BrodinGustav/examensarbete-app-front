@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
     this.loadWeeklyPoints();
   }
 
-    //Hämtar vecknas poäng
+    //Hämtar vecknas poäng i grupperade form (ex löpning, simning etc)
 
     loadWeeklyPoints(){
     this.profileService.getWeeklyPoints().subscribe({
@@ -54,6 +54,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  //Hämtar en användares varje aktivitet för detaljerad vy i profil
     loadUserData() {
       this.profileService.getUserData().subscribe({
         next: (response) => {
