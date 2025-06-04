@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { LeaderBoardComponent } from '../leader-board/leader-board.component';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { DateOfDayComponent } from "../date-of-day/date-of-day.component";
-import { LeaderboardUser } from '../models/leaderboard-user';
 import { LeaderboardServiceService } from '../services/leaderboard.service';
 
 @Component({

@@ -38,7 +38,6 @@ export class StatisticsComponent implements OnInit {
     this.profileService.getUserData().subscribe({
       next: (response) => {
         this.userData = response.data;
-        console.log('Användardata:', this.userData);
         this.loading = false;
 
        //Konfigurerar diagramdata

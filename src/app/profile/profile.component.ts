@@ -40,14 +40,9 @@ export class ProfileComponent implements OnInit {
     this.profileService.getWeeklyPoints().subscribe({
       next: (data) => {
         this.weeklyPoints = data;
-        console.log('Aktivitet:', this.getUser);
-        console.log('Veckans aktiviteter:', this.weeklyPoints);
 
 
         this.loading = false;
-
-        //debugg
-        console.log(data);
 
       },
       error: (err) => {
@@ -63,8 +58,6 @@ export class ProfileComponent implements OnInit {
       this.profileService.getUserData().subscribe({
         next: (response) => {
           this.userData = response.data;
-          console.log('Användardata:', this.userData);
-          console.log('Aktiviteter:', this.userData.activities);
           this.loading = false;
         },
         error: (err) => {
@@ -84,10 +77,6 @@ export class ProfileComponent implements OnInit {
     this.profileService.getWeeklyPoints().subscribe({
       next: (data) => {
         this.weeklyPoints = data;
-        console.log('Aktivitet:', this.getUser);
-
-        //debugg
-        console.log(data);
 
       },
       error: (err) => {

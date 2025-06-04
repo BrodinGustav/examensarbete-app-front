@@ -24,13 +24,8 @@ export class ActivityListComponent implements OnInit {
     this.activityListSerivce.getActivities().subscribe({
       next: (data) => {
         this.activities = data;
-        console.log('Aktiviteter:', this.activities);
 
         this.loading = false;
-
-        //debugg
-        console.log(data);
-
 
       },
       error: (err) => {
