@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { UserNameInHeader } from '../models/user-name-in-header';
@@ -14,7 +14,7 @@ import { UserNameInHeaderService } from '../services/user-name-in-header.service
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
 
 
 
@@ -41,21 +41,28 @@ export class HeaderComponent implements OnInit{
   userEmail: string | null = '';
 
 
-  constructor(private router: Router, private userNameInHeaderService: UserNameInHeaderService) {}
+  constructor(private router: Router, private userNameInHeaderService: UserNameInHeaderService) {
 
+    //Uppdaterar användarnamnet i headern vid varje navigering för att säkerställa att rätt användare visas
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.loadUserNameInHeader();
+      }
+    });
 
-  ngOnInit(): void {
-    this.loadUserNameInHeader();
   }
 
 
+  ngOnInit(): void { }
 
-//Utskrift av användarnamn till headern
-  loadUserNameInHeader(){
+
+
+  //Utskrift av användarnamn till headern
+  loadUserNameInHeader() {
     this.userEmail = localStorage.getItem('email');
 
     //GET
-    this.userNameInHeaderService.  getAllUsers().subscribe(data => {
+    this.userNameInHeaderService.getAllUsers().subscribe(data => {
       const currentUser = data.find(entry => entry.email === this.userEmail);
       if (currentUser) {
         this.name = currentUser.name;
