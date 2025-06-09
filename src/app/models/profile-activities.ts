@@ -2,7 +2,7 @@ export interface Activity {
   id: number;
   points: number;
   duration: string;
-  timestamp: string;
+ date: string;
   activity: string;
 }
 
@@ -22,6 +22,6 @@ export interface UserApiResponse {
 export interface ActivitySummary {
   id: number;
   activity: string;
-  timestamp: string;
+  date: string;
   points: number;
 }

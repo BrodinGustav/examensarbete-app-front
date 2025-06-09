@@ -57,7 +57,7 @@
                 <ng-container *ngFor="let activity of userData.activities">
             <tr>
               <td class="has-text-centered">{{ activity.activity }}</td>
-              <td class="has-text-centered">{{ activity.timestamp | date:'MM-dd' }}</td>
+              <td class="has-text-centered">{{ activity.date | date:'MM-dd' }}</td>
               <td class="has-text-centered">{{ activity.points }}</td>
               <app-delete-activity-btn [id]="activity.id" (deleted)="deleted(activity.id)"></app-delete-activity-btn>
             </tr>
